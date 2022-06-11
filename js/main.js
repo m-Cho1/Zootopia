@@ -1,6 +1,7 @@
 var $refreshBtn = document.querySelector('#refresh-btn');
 var $ul = document.querySelector('#animal-list');
 
+// loading animal list
 function loadAnimalList(event) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://zoo-animal-api.herokuapp.com/animals/rand/10');
@@ -8,8 +9,8 @@ function loadAnimalList(event) {
   xhr.addEventListener('load', xhrLoadFunc);
 
   function xhrLoadFunc(event) {
-    console.log('xhr status : ', xhr.status);
-    console.log('xhr response : ', xhr.response);
+    // console.log('xhr status : ', xhr.status);
+    // console.log('xhr response : ', xhr.response);
     var response = xhr.response;
     for (var i = 0; i < response.length; i++) {
       var animal = response[i];
@@ -20,6 +21,7 @@ function loadAnimalList(event) {
 }
 loadAnimalList();
 
+// refreshing animal list button function
 $refreshBtn.addEventListener('click', refreshAnimalList);
 function refreshAnimalList(event) {
   if ($ul.children.length !== 0) {
@@ -28,6 +30,7 @@ function refreshAnimalList(event) {
   }
 }
 
+// render animal DOM tree
 function renderAnimal(event) {
   var $li = document.createElement('li');
   $li.setAttribute('class', 'list-style');
