@@ -1,6 +1,8 @@
 var $refreshBtn = document.querySelector('#refresh-btn');
 var $ul = document.querySelector('#animal-list');
 
+var currentAnimalList;
+
 // loading animal list
 function loadAnimalList(event) {
   var xhr = new XMLHttpRequest();
@@ -16,6 +18,7 @@ function loadAnimalList(event) {
       var animal = response[i];
       $ul.appendChild(renderAnimal(animal));
     }
+    currentAnimalList = response;
   }
   xhr.send();
 }
