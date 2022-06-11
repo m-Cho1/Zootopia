@@ -1,0 +1,41 @@
+.style-header {
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  background-color: #fdf6ec;
+}
+
+.svg-container-monkey {
+  height: 3rem;
+  width: 3rem;
+}
+
+.svg-container-leopard {
+  height: 4rem;
+  width: 4rem;
+}
+
+.style-svg-container-left {
+  margin-left: 2rem;
+}
+
+.style-svg-container-right {
+  margin-right: 2rem;
+}
+
+.style-svg-header {
+  width: 100%;
+}
+
+.padding-top-svg {
+  padding-top: 3px;
+}
+
+.font {
+  font-family: Roboto, sans-serif;
+}
+
+.style-header > h1 {
+  font-size: 1.8rem;
+}
