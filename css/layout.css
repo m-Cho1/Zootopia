@@ -4,9 +4,14 @@ body {
   background-color: #e4d1b9;
 }
 
+main {
+  display: flex;
+  justify-content: center;
+}
+
 .container {
   margin: 3rem;
-  min-height: calc(100vh - 4rem);
+  min-height: calc(90vh - 4rem);
 }
 
 .column-full {
