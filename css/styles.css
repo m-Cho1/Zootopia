@@ -39,3 +39,58 @@
 .style-header > h1 {
   font-size: 1.8rem;
 }
+
+.style-footer {
+  height: 4rem;
+  display: flex;
+  background-color: #fdf6ec;
+  justify-content: center;
+  align-items: center;
+}
+
+.style-refresh-btn {
+  border-radius: 0.2rem;
+  width: 10rem;
+  height: 2rem;
+  border: 1px solid gray;
+  background-color: transparent;
+  color: gray;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.display-style {
+  flex-wrap: wrap;
+}
+
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-basis: calc(100% / 2);
+  padding-bottom: 1rem;
+}
+
+.card {
+  width: 8rem;
+  height: 11rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 0.5px solid grey;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.style-animal-img {
+  padding: 1rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .card-wrapper {
+    flex-basis: calc(100% / 5);
+  }
+}

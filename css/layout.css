@@ -1,3 +1,12 @@
 body {
   margin: 0 auto;
+  background-color: #e4d1b9;
+}
+
+.container {
+  margin: 3rem;
+}
+
+.column-full {
+  width: 100%;
 }
