@@ -9,11 +9,23 @@ main {
   justify-content: center;
 }
 
-.container {
+.container-main {
   margin: 3rem;
   min-height: calc(90vh - 4rem);
 }
 
-.column-full {
+.container-detail {
+  margin-top: 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  min-height: calc(100vh - 4rem);
+}
+
+.column-full,
+.column-half {
   width: 100%;
+}
+
+.hidden {
+  display: none;
 }

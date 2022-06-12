@@ -3,6 +3,11 @@ var $ul = document.querySelector('#animal-list');
 
 var currentAnimalList;
 
+window.addEventListener('DOMContentLoaded', function (event) {
+  event.preventDefault();
+  // loadAnimalList();
+});
+
 // loading animal list
 function loadAnimalList(event) {
   var xhr = new XMLHttpRequest();
@@ -22,7 +27,7 @@ function loadAnimalList(event) {
   }
   xhr.send();
 }
-loadAnimalList();
+// loadAnimalList();
 
 // refreshing animal list button function
 $refreshBtn.addEventListener('click', refreshAnimalList);

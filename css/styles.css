@@ -70,10 +70,10 @@
 
 .card {
   width: 8rem;
-  height: 13rem;
+  height: 13.5rem;
   background-color: white;
   border-radius: 0.5rem;
-  border: 0.5px solid grey;
+  border: 0.5px solid rgb(190, 189, 189);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,18 +82,15 @@
 .style-animal-img {
   padding: 0.5rem;
   width: 100%;
-  height: 9rem;
+  height: 10rem;
   border-radius: 0.8rem;
   object-fit: fill;
 }
 
-ul {
+.style-ul-main-page {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.style-ul {
   display: flex;
   flex-wrap: wrap;
 }
@@ -106,8 +103,69 @@ li {
   text-align: center;
   font-family: Nunito, sans-serif;
   font-weight: bold;
-  font-size: 1rem;
-  margin-top: 1rem;
+  font-size: 0.9rem;
+  padding-top: 0.5rem;
+  margin: 0;
+}
+
+.style-card-detail-img {
+  width: 20rem;
+  height: 21rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 0.5px solid rgb(190, 189, 189);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.style-img-detail-page {
+  padding: 1rem;
+  width: 100%;
+  height: 16rem;
+}
+
+.card-detail-text {
+  width: 20rem;
+  height: 17rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 0.5px solid rgb(190, 189, 189);
+  display: flex;
+  flex-direction: column;
+}
+
+.style-title-information {
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+.style-detail-title {
+  padding-left: 1rem;
+}
+
+.font-nunito {
+  font-family: nunito, sans-serif;
+}
+
+.padding-bottom {
+  padding-bottom: 1rem;
+}
+
+.description-list {
+  margin-top: 0;
+}
+
+.description-list > li {
+  line-height: 1.5rem;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 button:hover {
