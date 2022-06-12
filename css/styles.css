@@ -176,6 +176,18 @@ button:hover {
   .list-style {
     flex-basis: calc(100% / 3);
   }
+
+  .column-half {
+    width: 50%;
+  }
+
+  .padding-left {
+    padding-left: 1rem;
+  }
+
+  .padding-right {
+    padding-right: 1rem;
+  }
 }
 
 @media screen and (min-width: 990px) {
