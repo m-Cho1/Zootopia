@@ -172,6 +172,21 @@ button:hover {
   cursor: pointer;
 }
 
+.button-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.style-back-to-list-btn {
+  border-radius: 0.2rem;
+  width: 10rem;
+  height: 2rem;
+  border: 1px solid gray;
+  background-color: transparent;
+  color: gray;
+}
+
 @media screen and (min-width: 768px) {
   .list-style {
     flex-basis: calc(100% / 3);
