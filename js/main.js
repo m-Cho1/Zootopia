@@ -64,3 +64,17 @@ function renderAnimal(event) {
 
   return $li;
 }
+
+// swapping views:
+var $views = document.querySelectorAll('[data-view]');
+function viewSwap(view) {
+  for (var i = 0; i < $views.length; i++) {
+    var currentView = $views[i];
+    if (view === currentView.getAttribute('data-view')) {
+      currentView.classList.remove('hidden');
+    } else {
+      currentView.classList.add('hidden');
+    }
+  }
+  // data.view = view;
+}
