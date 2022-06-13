@@ -32,6 +32,10 @@
   padding-top: 3px;
 }
 
+.padding-top-main-list {
+  padding-top: 2rem;
+}
+
 .font {
   font-family: Roboto, sans-serif;
 }
