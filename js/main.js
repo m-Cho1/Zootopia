@@ -30,7 +30,6 @@ function loadAnimalList(event) {
   }
   xhr.send();
 }
-// loadAnimalList();
 
 // refreshing animal list button function
 $refreshBtn.addEventListener('click', refreshAnimalList);
@@ -80,7 +79,6 @@ function viewSwap(view) {
       currentView.classList.add('hidden');
     }
   }
-  // data.view = view;
 }
 
 // hiding buttons in footer:
@@ -137,6 +135,9 @@ function viewAnimal(event) {
       currentAnimalData.geoRange = matchAnimal.geo_range;
       currentAnimalData.image = matchAnimal.image_link;
     }
+  }
+  if ($div.children.length > 0) {
+    $div.replaceChildren();
   }
   renderDetail(currentAnimalData);
 }
@@ -238,7 +239,6 @@ function renderDetail(event) {
   $geoRange.textContent = 'Geo-range : ' + event.geoRange;
   $descriptionList.appendChild($geoRange);
 
-  // console.log('row2 :', $row2);
   return $row2;
 }
 
@@ -258,3 +258,27 @@ var $cancelModal = document.querySelector('#cancel-btn');
 $cancelModal.addEventListener('click', function (event) {
   $modalContainer.classList.add('hidden');
 });
+
+// add current animal to favorites:
+var $confirmModalBtn = document.querySelector('#confirm-btn');
+$confirmModalBtn.addEventListener('click', addToFavorites);
+
+function addToFavorites(event) {
+  var favoriteAnimal = Object.create(currentAnimalData);
+  favoriteAnimal.activeTime = currentAnimalData.activeTime;
+  favoriteAnimal.animalName = currentAnimalData.animalName;
+  favoriteAnimal.animalType = currentAnimalData.animalType;
+  favoriteAnimal.diet = currentAnimalData.diet;
+  favoriteAnimal.geoRange = currentAnimalData.geoRange;
+  favoriteAnimal.habitat = currentAnimalData.habitat;
+  favoriteAnimal.image = currentAnimalData.image;
+  favoriteAnimal.lifeSpan = currentAnimalData.lifeSpan;
+  favoriteAnimal.favoriteId = data.nextFavoriteId;
+  data.favorites.unshift(favoriteAnimal);
+  data.nextFavoriteId++;
+  viewSwap('main-list');
+  $modalContainer.classList.add('hidden');
+  $refreshBtn.classList.remove('hidden');
+  $backToListBtn.classList.add('hidden');
+  resetCurrentAnimalData();
+}
