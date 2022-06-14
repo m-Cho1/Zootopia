@@ -5,7 +5,7 @@ var currentAnimalList;
 
 window.addEventListener('DOMContentLoaded', function (event) {
   event.preventDefault();
-  // loadAnimalList();
+  loadAnimalList();
   viewSwap('main-list');
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
@@ -160,6 +160,7 @@ function renderDetail(event) {
 
   var $row2 = document.createElement('div');
   $row2.setAttribute('class', 'row display-flex flex-wrap');
+  $row2.setAttribute('id', 'add-btn');
   $div.appendChild($row2);
 
   var $columnHalf1 = document.createElement('div');
@@ -200,6 +201,7 @@ function renderDetail(event) {
 
   var $addIcon = document.createElement('i');
   $addIcon.setAttribute('class', 'fa-solid fa-circle-plus');
+  $addIcon.setAttribute('id', 'add');
   $descriptionTitle.appendChild($addIcon);
 
   var $descriptionList = document.createElement('ul');
@@ -236,5 +238,23 @@ function renderDetail(event) {
   $geoRange.textContent = 'Geo-range : ' + event.geoRange;
   $descriptionList.appendChild($geoRange);
 
-  return $row1;
+  // console.log('row2 :', $row2);
+  return $row2;
 }
+
+// modal popup when user + button clicked:
+var $modalContainer = document.querySelector('.overlay');
+$div.addEventListener('click', function (event) {
+  if (event.target.tagName !== 'I') {
+    return;
+  }
+  if (event.target.tagName === 'I') {
+    $modalContainer.classList.remove('hidden');
+  }
+});
+
+// remove modal when cancel is clicked:
+var $cancelModal = document.querySelector('#cancel-btn');
+$cancelModal.addEventListener('click', function (event) {
+  $modalContainer.classList.add('hidden');
+});
