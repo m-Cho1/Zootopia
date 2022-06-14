@@ -30,7 +30,6 @@ function loadAnimalList(event) {
   }
   xhr.send();
 }
-// loadAnimalList();
 
 // refreshing animal list button function
 $refreshBtn.addEventListener('click', refreshAnimalList);
@@ -80,7 +79,6 @@ function viewSwap(view) {
       currentView.classList.add('hidden');
     }
   }
-  // data.view = view;
 }
 
 // hiding buttons in footer:
@@ -138,6 +136,9 @@ function viewAnimal(event) {
       currentAnimalData.image = matchAnimal.image_link;
     }
   }
+  if ($div.children.length > 0) {
+    $div.replaceChildren();
+  }
   renderDetail(currentAnimalData);
 }
 
@@ -160,6 +161,7 @@ function renderDetail(event) {
 
   var $row2 = document.createElement('div');
   $row2.setAttribute('class', 'row display-flex flex-wrap');
+  $row2.setAttribute('id', 'add-btn');
   $div.appendChild($row2);
 
   var $columnHalf1 = document.createElement('div');
@@ -194,9 +196,14 @@ function renderDetail(event) {
   $columnHalf2.appendChild($cardDescription);
 
   var $descriptionTitle = document.createElement('h3');
-  $descriptionTitle.setAttribute('class', 'style-detail-title font-nunito');
+  $descriptionTitle.setAttribute('class', 'style-detail-title font-nunito display-flex space-between');
   $descriptionTitle.textContent = 'Description';
   $cardDescription.appendChild($descriptionTitle);
+
+  var $addIcon = document.createElement('i');
+  $addIcon.setAttribute('class', 'fa-solid fa-circle-plus');
+  $addIcon.setAttribute('id', 'add');
+  $descriptionTitle.appendChild($addIcon);
 
   var $descriptionList = document.createElement('ul');
   $descriptionList.setAttribute('class', 'description-list font-nunito');
@@ -232,5 +239,46 @@ function renderDetail(event) {
   $geoRange.textContent = 'Geo-range : ' + event.geoRange;
   $descriptionList.appendChild($geoRange);
 
-  return $row1;
+  return $row2;
+}
+
+// modal popup when user + button clicked:
+var $modalContainer = document.querySelector('.overlay');
+$div.addEventListener('click', function (event) {
+  if (event.target.tagName !== 'I') {
+    return;
+  }
+  if (event.target.tagName === 'I') {
+    $modalContainer.classList.remove('hidden');
+  }
+});
+
+// remove modal when cancel is clicked:
+var $cancelModal = document.querySelector('#cancel-btn');
+$cancelModal.addEventListener('click', function (event) {
+  $modalContainer.classList.add('hidden');
+});
+
+// add current animal to favorites:
+var $confirmModalBtn = document.querySelector('#confirm-btn');
+$confirmModalBtn.addEventListener('click', addToFavorites);
+
+function addToFavorites(event) {
+  var favoriteAnimal = Object.create(currentAnimalData);
+  favoriteAnimal.activeTime = currentAnimalData.activeTime;
+  favoriteAnimal.animalName = currentAnimalData.animalName;
+  favoriteAnimal.animalType = currentAnimalData.animalType;
+  favoriteAnimal.diet = currentAnimalData.diet;
+  favoriteAnimal.geoRange = currentAnimalData.geoRange;
+  favoriteAnimal.habitat = currentAnimalData.habitat;
+  favoriteAnimal.image = currentAnimalData.image;
+  favoriteAnimal.lifeSpan = currentAnimalData.lifeSpan;
+  favoriteAnimal.favoriteId = data.nextFavoriteId;
+  data.favorites.unshift(favoriteAnimal);
+  data.nextFavoriteId++;
+  viewSwap('main-list');
+  $modalContainer.classList.add('hidden');
+  $refreshBtn.classList.remove('hidden');
+  $backToListBtn.classList.add('hidden');
+  resetCurrentAnimalData();
 }

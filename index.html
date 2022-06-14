@@ -14,8 +14,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+  <div class="overlay hidden">
+    <div class="row">
+      <div class="column-full display-flex justify-center">
+        <div class="modal-message">
+          <div class="style-message-modal">
+            <p>Add to favorites?</p>
+            <img src="animal.svg/racoon.svg" alt="racoon image">
+          </div>
+          <div class="button-container-modal">
+            <button id="cancel-btn" class="sytle-button-cancel">CANCEL</button>
+            <button id="confirm-btn" class="style-button-confirm">CONFIRM</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <header class="style-header">
     <div class="svg-container-monkey padding-top-svg style-svg-container-right">
       <img class="style-svg-header" src="animal.svg/monkey.svg" alt="monkey image">
@@ -27,50 +46,21 @@
   </header>
   <main>
     <div data-view="main-list" class="container-main">
+      <div class="row">
+        <div class="column-full">
+          <h2 class="font-nunito style-font-main">Animals</h2>
+        </div>
+      </div>
       <div class="row padding-top-main-list">
         <div class="column-full display-flex">
           <ul id="animal-list" class="style-ul-main-page">
-            <!-- <li class="list-style">
-              <div class="card-wrapper">
-                <div class="card">
-                  <img class="style-animal-img" src="images/favicon.ico" alt="example-img">
-                  <p>Dummy Image</p>
-                </div>
-              </div>
-            </li> -->
+
           </ul>
         </div>
       </div>
     </div>
     <div data-view="details" class="container-detail">
-      <!-- <div class="row">
-        <div class="column-full">
-          <h2 class="font-nunito style-title-information">Information</h2>
-        </div>
-      </div>
-      <div class="row display-flex flex-wrap">
-        <div class="column-half padding-bottom display-flex justify-center padding-right">
-          <div class="card-wrapper-detail">
-            <div class="style-card-detail-img">
-              <img class="style-img-detail-page" src="images/favicon.ico" alt="example-img">
-              <h4 class="font-nunito">Example Image</h4>
-            </div>
-          </div>
-        </div>
-        <div class="column-half display-flex justify-center padding-right">
-          <div class="card-detail-text">
-            <h3 class="style-detail-title font-nunito">Description</h3>
-            <ul class="description-list font-nunito">
-              <li>Animal Type: </li>
-              <li>Active Time: </li>
-              <li>Lifespan:  </li>
-              <li>Habitat: </li>
-              <li>Diet: </li>
-              <li>Geo-range: </li>
-            </ul>
-          </div>
-        </div>
-      </div> -->
+
     </div>
   </main>
   <footer class="style-footer">
