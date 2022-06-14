@@ -119,7 +119,7 @@ li {
   font-family: Nunito, sans-serif;
   font-weight: bold;
   font-size: 0.9rem;
-  padding-top: 0.5rem;
+  padding: 0.5rem 0.1rem 0;
   margin: 0;
 }
 
@@ -214,6 +214,65 @@ button:hover {
 
 i {
   cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.style-message-modal {
+  font-family: roboto, sans-serif;
+  font-weight: bold;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.style-message-modal > img {
+  width: 20%;
+  margin-left: 1rem;
+}
+
+.modal-message {
+  position: absolute;
+  top: 20%;
+  background-color: white;
+  border: none;
+  border-radius: 0.2rem;
+  display: flex;
+  width: 20rem;
+  height: 10rem;
+  flex-direction: column;
+}
+
+.button-container-modal {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.sytle-button-cancel {
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: rgba(241, 45, 11, 0.959);
+  color: white;
+  font-family: roboto, sans-serif;
+}
+
+.style-button-confirm {
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: rgb(88, 204, 10);
+  color: white;
+  font-family: roboto, sans-serif;
 }
 
 @media screen and (min-width: 768px) {
