@@ -1,6 +1,16 @@
 var $refreshBtn = document.querySelector('#refresh-btn');
 var $ul = document.querySelector('#animal-list');
 
+var currentAnimalList;
+
+window.addEventListener('DOMContentLoaded', function (event) {
+  event.preventDefault();
+  loadAnimalList();
+  viewSwap('main-list');
+  $refreshBtn.classList.remove('hidden');
+  $backToListBtn.classList.add('hidden');
+});
+
 // loading animal list
 function loadAnimalList(event) {
   var xhr = new XMLHttpRequest();
@@ -16,10 +26,11 @@ function loadAnimalList(event) {
       var animal = response[i];
       $ul.appendChild(renderAnimal(animal));
     }
+    currentAnimalList = response;
   }
   xhr.send();
 }
-loadAnimalList();
+// loadAnimalList();
 
 // refreshing animal list button function
 $refreshBtn.addEventListener('click', refreshAnimalList);
@@ -47,6 +58,7 @@ function renderAnimal(event) {
   $img.setAttribute('class', 'style-animal-img');
   $img.setAttribute('src', event.image_link);
   $img.setAttribute('alt', 'animal image');
+  $img.setAttribute('name', event.name);
   $card.appendChild($img);
 
   var $animalName = document.createElement('p');
@@ -55,4 +67,170 @@ function renderAnimal(event) {
   $card.appendChild($animalName);
 
   return $li;
+}
+
+// swapping views:
+var $views = document.querySelectorAll('[data-view]');
+function viewSwap(view) {
+  for (var i = 0; i < $views.length; i++) {
+    var currentView = $views[i];
+    if (view === currentView.getAttribute('data-view')) {
+      currentView.classList.remove('hidden');
+    } else {
+      currentView.classList.add('hidden');
+    }
+  }
+  // data.view = view;
+}
+
+// hiding buttons in footer:
+var $backToListBtn = document.querySelector('#back-to-list-btn');
+$backToListBtn.addEventListener('click', function () {
+  resetCurrentAnimalData();
+  $refreshBtn.classList.remove('hidden');
+  $backToListBtn.classList.add('hidden');
+  $div.replaceChildren();
+  viewSwap('main-list');
+});
+
+// reset currentAnimalData:
+function resetCurrentAnimalData() {
+  currentAnimalData.animalName = '';
+  currentAnimalData.animalType = '';
+  currentAnimalData.activeTime = '';
+  currentAnimalData.lifeSpan = null;
+  currentAnimalData.habitat = '';
+  currentAnimalData.diet = '';
+  currentAnimalData.geoRange = '';
+}
+
+// clicking animal to view detail:
+var currentAnimalData = {
+  animalName: '',
+  animalType: '',
+  activeTime: '',
+  lifeSpan: null,
+  habitat: '',
+  diet: '',
+  geoRange: '',
+  image: ''
+};
+
+$ul.addEventListener('click', viewAnimal);
+
+function viewAnimal(event) {
+  if (event.target.tagName !== 'IMG') {
+    return;
+  }
+  for (var i = 0; i < currentAnimalList.length; i++) {
+    var matchAnimal = currentAnimalList[i];
+    if (event.target.tagName === 'IMG' && event.target.name === matchAnimal.name) {
+      viewSwap('details');
+      $refreshBtn.classList.add('hidden');
+      $backToListBtn.classList.remove('hidden');
+      currentAnimalData.animalName = matchAnimal.name;
+      currentAnimalData.animalType = matchAnimal.animal_type;
+      currentAnimalData.activeTime = matchAnimal.active_time;
+      currentAnimalData.lifeSpan = matchAnimal.lifespan;
+      currentAnimalData.habitat = matchAnimal.habitat;
+      currentAnimalData.diet = matchAnimal.diet;
+      currentAnimalData.geoRange = matchAnimal.geo_range;
+      currentAnimalData.image = matchAnimal.image_link;
+    }
+  }
+  renderDetail(currentAnimalData);
+}
+
+// render DOM tree for information view:
+var $div = document.querySelector('.container-detail');
+
+function renderDetail(event) {
+  var $row1 = document.createElement('div');
+  $row1.setAttribute('class', 'row');
+  $div.appendChild($row1);
+
+  var $columnFull = document.createElement('div');
+  $columnFull.setAttribute('class', 'column-full');
+  $row1.appendChild($columnFull);
+
+  var $pageTitle = document.createElement('h2');
+  $pageTitle.setAttribute('class', 'font-nunito style-title-information');
+  $pageTitle.textContent = 'Information';
+  $columnFull.appendChild($pageTitle);
+
+  var $row2 = document.createElement('div');
+  $row2.setAttribute('class', 'row display-flex flex-wrap');
+  $div.appendChild($row2);
+
+  var $columnHalf1 = document.createElement('div');
+  $columnHalf1.setAttribute('class', 'column-half padding-bottom display-flex justify-center padding-right');
+  $row2.appendChild($columnHalf1);
+
+  var $cardWrapperDetail = document.createElement('div');
+  $cardWrapperDetail.setAttribute('class', 'card-wrapper-detail');
+  $columnHalf1.appendChild($cardWrapperDetail);
+
+  var $cardImg = document.createElement('div');
+  $cardImg.setAttribute('class', 'style-card-detail-img');
+  $cardWrapperDetail.appendChild($cardImg);
+
+  var $img = document.createElement('img');
+  $img.setAttribute('class', 'style-img-detail-page');
+  $img.setAttribute('src', event.image);
+  $img.setAttribute('alt', 'image of ' + event.animalName);
+  $cardImg.appendChild($img);
+
+  var $imgName = document.createElement('h4');
+  $imgName.setAttribute('class', 'font-nunito font-size-img-title');
+  $imgName.textContent = event.animalName;
+  $cardImg.appendChild($imgName);
+
+  var $columnHalf2 = document.createElement('div');
+  $columnHalf2.setAttribute('class', 'column-half display-flex justify-center padding-right padding-bottom-detail-text');
+  $row2.appendChild($columnHalf2);
+
+  var $cardDescription = document.createElement('div');
+  $cardDescription.setAttribute('class', 'card-detail-text');
+  $columnHalf2.appendChild($cardDescription);
+
+  var $descriptionTitle = document.createElement('h3');
+  $descriptionTitle.setAttribute('class', 'style-detail-title font-nunito');
+  $descriptionTitle.textContent = 'Description';
+  $cardDescription.appendChild($descriptionTitle);
+
+  var $descriptionList = document.createElement('ul');
+  $descriptionList.setAttribute('class', 'description-list font-nunito');
+  $cardDescription.appendChild($descriptionList);
+
+  var $animalType = document.createElement('li');
+  $animalType.setAttribute('class', 'style-description-list-item');
+  $animalType.textContent = 'Animal Type : ' + event.animalType;
+  $descriptionList.appendChild($animalType);
+
+  var $activeTime = document.createElement('li');
+  $activeTime.setAttribute('class', 'style-description-list-item');
+  $activeTime.textContent = 'Active Time : ' + event.activeTime;
+  $descriptionList.appendChild($activeTime);
+
+  var $lifespan = document.createElement('li');
+  $lifespan.setAttribute('class', 'style-description-list-item');
+  $lifespan.textContent = 'Lifespan : ' + event.lifeSpan + ' years';
+  $descriptionList.appendChild($lifespan);
+
+  var $habitat = document.createElement('li');
+  $habitat.setAttribute('class', 'style-description-list-item');
+  $habitat.textContent = 'Habitat : ' + event.habitat;
+  $descriptionList.appendChild($habitat);
+
+  var $diet = document.createElement('li');
+  $diet.setAttribute('class', 'style-description-list-item');
+  $diet.textContent = 'Diet : ' + event.diet;
+  $descriptionList.appendChild($diet);
+
+  var $geoRange = document.createElement('li');
+  $geoRange.setAttribute('class', 'style-description-list-item');
+  $geoRange.textContent = 'Geo-range : ' + event.geoRange;
+  $descriptionList.appendChild($geoRange);
+
+  return $row1;
 }

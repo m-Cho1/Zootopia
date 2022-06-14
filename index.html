@@ -26,10 +26,10 @@
     </div>
   </header>
   <main>
-    <div class="container">
-      <div class="row">
+    <div data-view="main-list" class="container-main">
+      <div class="row padding-top-main-list">
         <div class="column-full display-flex">
-          <ul id="animal-list" class="style-ul">
+          <ul id="animal-list" class="style-ul-main-page">
             <!-- <li class="list-style">
               <div class="card-wrapper">
                 <div class="card">
@@ -42,10 +42,41 @@
         </div>
       </div>
     </div>
+    <div data-view="details" class="container-detail">
+      <!-- <div class="row">
+        <div class="column-full">
+          <h2 class="font-nunito style-title-information">Information</h2>
+        </div>
+      </div>
+      <div class="row display-flex flex-wrap">
+        <div class="column-half padding-bottom display-flex justify-center padding-right">
+          <div class="card-wrapper-detail">
+            <div class="style-card-detail-img">
+              <img class="style-img-detail-page" src="images/favicon.ico" alt="example-img">
+              <h4 class="font-nunito">Example Image</h4>
+            </div>
+          </div>
+        </div>
+        <div class="column-half display-flex justify-center padding-right">
+          <div class="card-detail-text">
+            <h3 class="style-detail-title font-nunito">Description</h3>
+            <ul class="description-list font-nunito">
+              <li>Animal Type: </li>
+              <li>Active Time: </li>
+              <li>Lifespan:  </li>
+              <li>Habitat: </li>
+              <li>Diet: </li>
+              <li>Geo-range: </li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
+    </div>
   </main>
   <footer class="style-footer">
-    <div class="">
-      <button id="refresh-btn" class="style-refresh-btn">Refresh Animals List</button>
+    <div class="button-container">
+      <button id="refresh-btn" class="style-refresh-btn hidden">Refresh Animals List</button>
+      <button id="back-to-list-btn" class="style-back-to-list-btn">Back to List</button>
     </div>
   </footer>
   <script src="js/data.js"></script>
