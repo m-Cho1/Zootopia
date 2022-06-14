@@ -1,5 +1,6 @@
 var $refreshBtn = document.querySelector('#refresh-btn');
 var $ul = document.querySelector('#animal-list');
+var $favoriteBtn = document.querySelector('#favorites-btn');
 
 var currentAnimalList;
 
@@ -117,6 +118,7 @@ var currentAnimalData = {
 $ul.addEventListener('click', viewAnimal);
 
 function viewAnimal(event) {
+  $favoriteBtn.classList.add('hidden');
   if (event.target.tagName !== 'IMG') {
     return;
   }
@@ -265,15 +267,15 @@ $confirmModalBtn.addEventListener('click', addToFavorites);
 
 function addToFavorites(event) {
   var favoriteAnimal = Object.create(currentAnimalData);
-  favoriteAnimal.activeTime = currentAnimalData.activeTime;
+  favoriteAnimal.favoriteId = data.nextFavoriteId;
   favoriteAnimal.animalName = currentAnimalData.animalName;
+  favoriteAnimal.activeTime = currentAnimalData.activeTime;
   favoriteAnimal.animalType = currentAnimalData.animalType;
   favoriteAnimal.diet = currentAnimalData.diet;
   favoriteAnimal.geoRange = currentAnimalData.geoRange;
   favoriteAnimal.habitat = currentAnimalData.habitat;
   favoriteAnimal.image = currentAnimalData.image;
   favoriteAnimal.lifeSpan = currentAnimalData.lifeSpan;
-  favoriteAnimal.favoriteId = data.nextFavoriteId;
   data.favorites.unshift(favoriteAnimal);
   data.nextFavoriteId++;
   viewSwap('main-list');

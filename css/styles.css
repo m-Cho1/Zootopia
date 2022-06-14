@@ -192,7 +192,7 @@ button:hover {
 .button-container {
   width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .style-back-to-list-btn {
