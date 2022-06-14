@@ -89,6 +89,7 @@
   height: 10rem;
   border-radius: 0.8rem;
   object-fit: fill;
+  cursor: pointer;
 }
 
 .style-ul-main-page {
