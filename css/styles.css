@@ -45,11 +45,17 @@
 }
 
 .style-footer {
+  margin-top: 1rem;
   height: 4rem;
   display: flex;
   background-color: #fdf6ec;
   justify-content: center;
   align-items: center;
+}
+
+.style-font-main {
+  text-align: center;
+  margin: 0;
 }
 
 .style-refresh-btn {
@@ -63,6 +69,10 @@
 
 .display-flex {
   display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 .list-style {
@@ -142,12 +152,13 @@ li {
 }
 
 .style-title-information {
+  margin-top: 0;
   font-size: 1.3rem;
   font-weight: bolder;
 }
 
 .style-detail-title {
-  padding-left: 1rem;
+  padding: 0 1rem;
 }
 
 .font-nunito {
@@ -181,7 +192,7 @@ button:hover {
 .button-container {
   width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .style-back-to-list-btn {
@@ -199,6 +210,10 @@ button:hover {
 
 .font-size-img-title {
   font-size: 1.3rem;
+}
+
+i {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {

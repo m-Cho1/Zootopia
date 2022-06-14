@@ -194,9 +194,13 @@ function renderDetail(event) {
   $columnHalf2.appendChild($cardDescription);
 
   var $descriptionTitle = document.createElement('h3');
-  $descriptionTitle.setAttribute('class', 'style-detail-title font-nunito');
+  $descriptionTitle.setAttribute('class', 'style-detail-title font-nunito display-flex space-between');
   $descriptionTitle.textContent = 'Description';
   $cardDescription.appendChild($descriptionTitle);
+
+  var $addIcon = document.createElement('i');
+  $addIcon.setAttribute('class', 'fa-solid fa-circle-plus');
+  $descriptionTitle.appendChild($addIcon);
 
   var $descriptionList = document.createElement('ul');
   $descriptionList.setAttribute('class', 'description-list font-nunito');
