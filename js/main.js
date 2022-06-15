@@ -12,11 +12,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
   $favoriteBtn.classList.remove('hidden');
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
-  if (data.favorites.length === 0) {
-    $noFavMessage.classList.remove('hidden');
-  } else {
-    $noFavMessage.classList.add('hidden');
-  }
   for (var i = 0; i < data.favorites.length; i++) {
     var favorite = renderFavorites(data.favorites[i]);
     $favoriteUl.appendChild(favorite);
@@ -305,6 +300,11 @@ function addToFavorites(event) {
 // favorites page view function:
 $favoriteBtn.addEventListener('click', viewFavorites);
 function viewFavorites(event) {
+  if (data.favorites.length === 0) {
+    $noFavMessage.classList.remove('hidden');
+  } else {
+    $noFavMessage.classList.add('hidden');
+  }
   viewSwap('favorites');
   $refreshBtn.classList.add('hidden');
   $favoriteBtn.classList.add('hidden');
