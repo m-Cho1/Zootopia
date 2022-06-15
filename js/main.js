@@ -15,7 +15,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.favorites.length; i++) {
     var favorite = renderFavorites(data.favorites[i]);
     $favoriteUl.appendChild(favorite);
-
   }
 });
 
@@ -288,6 +287,8 @@ function addToFavorites(event) {
   favoriteAnimal.image = currentAnimalData.image;
   favoriteAnimal.lifeSpan = currentAnimalData.lifeSpan;
   data.favorites.unshift(favoriteAnimal);
+  var newFavorite = renderFavorites(data.favorites[0]);
+  $favoriteUl.prepend(newFavorite);
   data.nextFavoriteId++;
   viewSwap('main-list');
   $modalContainer.classList.add('hidden');
