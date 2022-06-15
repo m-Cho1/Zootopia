@@ -6,8 +6,8 @@ var currentAnimalList;
 
 window.addEventListener('DOMContentLoaded', function (event) {
   event.preventDefault();
-  // loadAnimalList();
-  viewSwap('favorites');
+  loadAnimalList();
+  viewSwap('main-list');
   $favoriteBtn.classList.remove('hidden');
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
@@ -85,14 +85,17 @@ function viewSwap(view) {
 
 // hiding buttons in footer:
 var $backToListBtn = document.querySelector('#back-to-list-btn');
-$backToListBtn.addEventListener('click', function () {
+var $backToMainBtn = document.querySelector('#back-to-main-btn1');
+$backToMainBtn.addEventListener('click', changeButtons);
+$backToListBtn.addEventListener('click', changeButtons);
+function changeButtons() {
   resetCurrentAnimalData();
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
   $favoriteBtn.classList.remove('hidden');
   $div.replaceChildren();
   viewSwap('main-list');
-});
+}
 
 // reset currentAnimalData:
 function resetCurrentAnimalData() {
@@ -295,8 +298,10 @@ $favoriteBtn.addEventListener('click', function () {
   $backToListBtn.classList.remove('hidden');
 });
 
-// DOM tree for rendering favorite animals:
+// favorites page view function:
 var $favoriteUl = document.querySelector('#favorites-list');
+
+// DOM tree for rendering favorite animals:
 function renderFavorites(event) {
   var $li = document.createElement('li');
   $li.setAttribute('class', 'list-style-favorites');
