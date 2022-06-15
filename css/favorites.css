@@ -37,3 +37,11 @@
   display: flex;
   flex-direction: column;
 }
+
+.list-style-no-favorite {
+  padding-top: 2rem;
+  list-style: none;
+  text-align: center;
+  font-size: 2rem;
+  font-family: nunito, sans-serif;
+}

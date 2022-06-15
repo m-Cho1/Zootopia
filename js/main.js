@@ -2,7 +2,7 @@ var $refreshBtn = document.querySelector('#refresh-btn');
 var $ul = document.querySelector('#animal-list');
 var $favoriteBtn = document.querySelector('#favorites-btn');
 var $favoriteUl = document.querySelector('#favorites-list');
-
+var $noFavMessage = document.querySelector('#no-favorite-message');
 var currentAnimalList;
 
 window.addEventListener('DOMContentLoaded', function (event) {
@@ -12,6 +12,11 @@ window.addEventListener('DOMContentLoaded', function (event) {
   $favoriteBtn.classList.remove('hidden');
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
+  if (data.favorites.length === 0) {
+    $noFavMessage.classList.remove('hidden');
+  } else {
+    $noFavMessage.classList.add('hidden');
+  }
   for (var i = 0; i < data.favorites.length; i++) {
     var favorite = renderFavorites(data.favorites[i]);
     $favoriteUl.appendChild(favorite);
@@ -128,7 +133,6 @@ var currentAnimalData = {
 $ul.addEventListener('click', viewAnimal);
 
 function viewAnimal(event) {
-  $favoriteBtn.classList.add('hidden');
   if (event.target.tagName !== 'IMG') {
     return;
   }
