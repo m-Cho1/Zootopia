@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
   event.preventDefault();
   loadAnimalList();
   viewSwap('main-list');
+  $favoriteBtn.classList.remove('hidden');
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
 });
@@ -88,6 +89,7 @@ $backToListBtn.addEventListener('click', function () {
   resetCurrentAnimalData();
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
+  $favoriteBtn.classList.remove('hidden');
   $div.replaceChildren();
   viewSwap('main-list');
 });
@@ -282,5 +284,13 @@ function addToFavorites(event) {
   $modalContainer.classList.add('hidden');
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
+  $favoriteBtn.classList.remove('hidden');
   resetCurrentAnimalData();
 }
+
+$favoriteBtn.addEventListener('click', function () {
+  viewSwap('favorites');
+  $refreshBtn.classList.add('hidden');
+  $favoriteBtn.classList.add('hidden');
+  $backToListBtn.classList.remove('hidden');
+});
