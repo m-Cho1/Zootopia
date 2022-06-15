@@ -263,7 +263,7 @@ $cancelModal.addEventListener('click', function (event) {
   $modalContainer.classList.add('hidden');
 });
 
-// add current animal to favorites:
+// add current animal to data.favorites:
 var $confirmModalBtn = document.querySelector('#confirm-btn');
 $confirmModalBtn.addEventListener('click', addToFavorites);
 
@@ -294,3 +294,81 @@ $favoriteBtn.addEventListener('click', function () {
   $favoriteBtn.classList.add('hidden');
   $backToListBtn.classList.remove('hidden');
 });
+
+// DOM tree for rendering favorite animals:
+var $favoriteUl = document.querySelector('#favorites-list');
+function renderFavorites(event) {
+  var $li = document.createElement('li');
+  $li.setAttribute('class', 'list-style-favorites');
+
+  var $row = document.createElement('div');
+  $row.setAttribute('class', 'row display-flex-favorites-list');
+  $li.appendChild($row);
+
+  var $columnHalf1 = document.createElement('div');
+  $columnHalf1.setAttribute('class', 'column-half padding-bottom padding-right-favorites');
+  $row.appendChild($columnHalf1);
+
+  var $cardWrapperImg = document.createElement('div');
+  $cardWrapperImg.setAttribute('class', 'card-wrapper-favorites');
+  $columnHalf1.appendChild($cardWrapperImg);
+
+  var $cardImg = document.createElement('div');
+  $cardImg.setAttribute('class', 'style-card-favorites-img');
+  $cardWrapperImg.appendChild($cardImg);
+
+  var $imgFavorite = document.createElement('img');
+  $imgFavorite.setAttribute('src', event.image);
+  $imgFavorite.setAttribute('alt', event.animalName);
+  $imgFavorite.setAttribute('class', 'style-img-favorites-page');
+  $cardImg.appendChild($imgFavorite);
+
+  var $imgName = document.createElement('h4');
+  $imgName.setAttribute('class', 'font-nunito font-size-img-title text-center-favorites');
+  $imgName.textContent = event.animalName;
+  $cardImg.appendChild($imgName);
+
+  var $columnHalf2 = document.createElement('div');
+  $columnHalf2.setAttribute('class', 'column-half padding-bottom padding-left-favorites');
+  $row.appendChild($columnHalf2);
+
+  var $cardDetails = document.createElement('div');
+  $cardDetails.setAttribute('class', 'favorite-card-detail-text');
+  $columnHalf2.appendChild($cardDetails);
+
+  var $descriptionTitle = document.createElement('h3');
+  $descriptionTitle.setAttribute('class', 'style-detail-title font-nunito');
+  $descriptionTitle.textContent = 'Description';
+  $cardDetails.appendChild($descriptionTitle);
+
+  var $descriptionUl = document.createElement('ul');
+  $descriptionUl.setAttribute('class', 'description-list font-nunito');
+  $cardDetails.appendChild($descriptionUl);
+
+  var $animalType = document.createElement('li');
+  $animalType.setAttribute('class', 'style-description-list-item');
+  $animalType.textContent = 'Animal Type: ' + event.animalType;
+  $descriptionUl.appendChild($animalType);
+
+  var $activeTime = document.createElement('li');
+  $activeTime.setAttribute('class', 'style-description-list-item');
+  $activeTime.textContent = 'Active Time: ' + event.activeTime;
+  $descriptionUl.appendChild($activeTime);
+
+  var $lifespan = document.createElement('li');
+  $lifespan.setAttribute('class', 'style-description-list-item');
+  $lifespan.textContent = 'Lifespan: ' + event.lifeSpan + ' years';
+  $descriptionUl.appendChild($lifespan);
+
+  var $habitat = document.createElement('li');
+  $habitat.setAttribute('class', 'style-description-list-item');
+  $habitat.textContent = 'Habitat: ' + event.habitat;
+  $descriptionUl.appendChild($habitat);
+
+  var $geoRange = document.createElement('li');
+  $geoRange.setAttribute('class', 'style-description-list-item');
+  $geoRange.textContent = 'Geo-range: ' + event.geoRange;
+  $descriptionUl.appendChild($geoRange);
+
+  return $li;
+}
