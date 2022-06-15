@@ -6,8 +6,8 @@ var currentAnimalList;
 
 window.addEventListener('DOMContentLoaded', function (event) {
   event.preventDefault();
-  loadAnimalList();
-  viewSwap('main-list');
+  // loadAnimalList();
+  viewSwap('favorites');
   $favoriteBtn.classList.remove('hidden');
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');

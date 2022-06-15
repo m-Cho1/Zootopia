@@ -1,0 +1,39 @@
+.style-ul-favorites {
+  padding: 0;
+}
+
+.list-style-favorites {
+  list-style: none;
+}
+
+.card-wrapper-favorites {
+  width: 21rem;
+  height: 24rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 0.5px solid rgb(190, 189, 189);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.style-img-favorites-page {
+  padding: 1rem;
+  width: 100%;
+  height: 20rem;
+  border-radius: 1.4rem;
+}
+
+.text-center-favorites {
+  text-align: center;
+}
+
+.favorite-card-detail-text {
+  width: 21rem;
+  height: auto;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 0.5px solid rgb(190, 189, 189);
+  display: flex;
+  flex-direction: column;
+}

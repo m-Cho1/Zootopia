@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/favorites.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -66,14 +67,65 @@
 
     <div data-view="favorites" class="container-favorites">
       <div class="row style-row-favorites">
-        <div class="column-full display-flex justify-center">
-          <h3>Favorites</h3>
+        <div class="column-full display-flex space-between align-item">
+          <h3 class="font">Favorites</h3>
+          <button id="back-to-main-btn1" class="style-back-to-main-btn">Back to Main</button>
         </div>
       </div>
       <div class="row">
-        <div class="column-full display-flex">
-          <ul id="favorites-list" class="style-ul-main-page">
+        <div class="column-full display-flex justify-center">
+          <ul id="favorites-list" class="style-ul-favorites">
+            <li class="list-style-favorites">
+              <div class="row display-flex-favorites-list">
+                <div class="column-half padding-bottom padding-right-favorites">
+                  <div class="card-wrapper-favorites">
+                    <div class="style-card-favorites-img">
+                      <img src="images/favicon.ico" alt="exmpale image" class="style-img-favorites-page">
+                      <h4 class="font-nunito font-size-img-title text-center-favorites">Example Image</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="column-half padding-bottom padding-left-favorites">
+                  <div class="favorite-card-detail-text">
+                    <h3 class="style-detail-title font-nunito">Description</h3>
+                    <ul class="description-list font-nunito">
+                      <li class="style-description-list-item">Animal Type:</li>
+                      <li class="style-description-list-item">Active Time:</li>
+                      <li class="style-description-list-item">Lifespan:</li>
+                      <li class="style-description-list-item">Habitat:</li>
+                      <li class="style-description-list-item">Diet:</li>
+                      <li class="style-description-list-item">Geo-range:</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
 
+            <li class="list-style-favorites">
+              <div class="row display-flex-favorites-list">
+                <div class="column-half padding-bottom padding-right-favorites">
+                  <div class="card-wrapper-favorites">
+                    <div class="style-card-favorites-img">
+                      <img src="images/favicon.ico" alt="exmpale image" class="style-img-favorites-page">
+                      <h4 class="font-nunito font-size-img-title text-center-favorites">Example Image</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="column-half padding-left-favorites">
+                  <div class="favorite-card-detail-text">
+                    <h3 class="style-detail-title font-nunito">Description</h3>
+                    <ul class="description-list font-nunito">
+                      <li class="style-description-list-item">Animal Type:</li>
+                      <li class="style-description-list-item">Active Time:</li>
+                      <li class="style-description-list-item">Lifespan:</li>
+                      <li class="style-description-list-item">Habitat:</li>
+                      <li class="style-description-list-item">Diet:</li>
+                      <li class="style-description-list-item">Geo-range:</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
       </div>

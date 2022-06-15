@@ -75,6 +75,10 @@
   justify-content: space-between;
 }
 
+.align-item {
+  align-items: center;
+}
+
 .list-style {
   display: flex;
   justify-content: center;
@@ -280,6 +284,16 @@ i {
   width: 100%;
 }
 
+.style-back-to-main-btn {
+  width: 8rem;
+  height: 2.2rem;
+  border: 1px solid #343a40;
+  background-color: transparent;
+  font-family: roboto, sans-serif;
+  border-radius: 0.2rem;
+  color: #343a40;
+}
+
 @media screen and (min-width: 768px) {
   .list-style {
     flex-basis: calc(100% / 3);
@@ -303,6 +317,18 @@ i {
 
   .padding-bottom-detail-text {
     padding-bottom: 1rem;
+  }
+
+  .display-flex-favorites-list {
+    display: flex;
+  }
+
+  .padding-right-favorites {
+    padding-right: 1rem;
+  }
+
+  .padding-left-favorites {
+    padding-left: 1rem;
   }
 }
 
