@@ -1,6 +1,7 @@
 var $refreshBtn = document.querySelector('#refresh-btn');
 var $ul = document.querySelector('#animal-list');
 var $favoriteBtn = document.querySelector('#favorites-btn');
+var $favoriteUl = document.querySelector('#favorites-list');
 
 var currentAnimalList;
 
@@ -11,6 +12,11 @@ window.addEventListener('DOMContentLoaded', function (event) {
   $favoriteBtn.classList.remove('hidden');
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
+  for (var i = 0; i < data.favorites.length; i++) {
+    var favorite = renderFavorites(data.favorites[i]);
+    $favoriteUl.appendChild(favorite);
+
+  }
 });
 
 // loading animal list
@@ -291,15 +297,14 @@ function addToFavorites(event) {
   resetCurrentAnimalData();
 }
 
-$favoriteBtn.addEventListener('click', function () {
+// favorites page view function:
+$favoriteBtn.addEventListener('click', viewFavorites);
+function viewFavorites(event) {
   viewSwap('favorites');
   $refreshBtn.classList.add('hidden');
   $favoriteBtn.classList.add('hidden');
   $backToListBtn.classList.remove('hidden');
-});
-
-// favorites page view function:
-var $favoriteUl = document.querySelector('#favorites-list');
+}
 
 // DOM tree for rendering favorite animals:
 function renderFavorites(event) {
