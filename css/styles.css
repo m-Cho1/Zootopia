@@ -32,7 +32,7 @@
   padding-top: 3px;
 }
 
-.padding-top-main-list {
+.padding-top {
   padding-top: 2rem;
 }
 
@@ -73,6 +73,10 @@
 
 .space-between {
   justify-content: space-between;
+}
+
+.align-item {
+  align-items: center;
 }
 
 .list-style {
@@ -125,7 +129,7 @@ li {
 
 .style-card-detail-img {
   width: 21rem;
-  height: 21rem;
+  height: 24rem;
   background-color: white;
   border-radius: 0.5rem;
   border: 0.5px solid rgb(190, 189, 189);
@@ -137,7 +141,7 @@ li {
 .style-img-detail-page {
   padding: 1rem;
   width: 100%;
-  height: 16rem;
+  height: 20rem;
   border-radius: 1.4rem;
 }
 
@@ -192,7 +196,7 @@ button:hover {
 .button-container {
   width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .style-back-to-list-btn {
@@ -209,6 +213,7 @@ button:hover {
 }
 
 .font-size-img-title {
+  margin-top: 0.2rem;
   font-size: 1.3rem;
 }
 
@@ -275,6 +280,20 @@ i {
   font-family: roboto, sans-serif;
 }
 
+.style-row-favorites {
+  width: 100%;
+}
+
+.style-back-to-main-btn {
+  width: 8rem;
+  height: 2.2rem;
+  border: 1px solid #343a40;
+  background-color: transparent;
+  font-family: roboto, sans-serif;
+  border-radius: 0.2rem;
+  color: #343a40;
+}
+
 @media screen and (min-width: 768px) {
   .list-style {
     flex-basis: calc(100% / 3);
@@ -298,6 +317,18 @@ i {
 
   .padding-bottom-detail-text {
     padding-bottom: 1rem;
+  }
+
+  .display-flex-favorites-list {
+    display: flex;
+  }
+
+  .padding-right-favorites {
+    padding-right: 1rem;
+  }
+
+  .padding-left-favorites {
+    padding-left: 1rem;
   }
 }
 

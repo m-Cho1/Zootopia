@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/favorites.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -24,12 +25,13 @@
       <div class="column-full display-flex justify-center">
         <div class="modal-message">
           <div class="style-message-modal">
-            <p>Add to favorites?</p>
-            <img src="animal.svg/racoon.svg" alt="racoon image">
+            <p id="modal-text">Add to favorites?</p>
+            <img id="modal-animal-img" src="animal.svg/racoon.svg" alt="racoon image">
           </div>
           <div class="button-container-modal">
             <button id="cancel-btn" class="sytle-button-cancel">CANCEL</button>
             <button id="confirm-btn" class="style-button-confirm">CONFIRM</button>
+            <button id="delete-btn" class="style-button-delete hidden">DELETE</button>
           </div>
         </div>
       </div>
@@ -51,7 +53,7 @@
           <h2 class="font-nunito style-font-main">Animals</h2>
         </div>
       </div>
-      <div class="row padding-top-main-list">
+      <div class="row padding-top">
         <div class="column-full display-flex">
           <ul id="animal-list" class="style-ul-main-page">
 
@@ -59,14 +61,34 @@
         </div>
       </div>
     </div>
+
     <div data-view="details" class="container-detail">
 
     </div>
+
+    <div data-view="favorites" class="container-favorites">
+      <div class="row style-row-favorites">
+        <div class="column-full display-flex space-between align-item">
+          <h3 class="font">Favorites</h3>
+          <button id="back-to-main-btn1" class="style-back-to-main-btn">Back to Main</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column-full display-flex justify-center">
+          <ul id="favorites-list" class="style-ul-favorites">
+            <li id="no-favorite-message" class="list-style-no-favorite hidden">No Favorite animals yet. Start adding one now!</li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </main>
   <footer class="style-footer">
     <div class="button-container">
       <button id="refresh-btn" class="style-refresh-btn hidden">Refresh Animals List</button>
-      <button id="back-to-list-btn" class="style-back-to-list-btn">Back to List</button>
+      <button id="back-to-list-btn" class="style-back-to-list-btn">Back to Main</button>
+      <button id="favorites-btn" class="style-refresh-btn">Favorites</button>
     </div>
   </footer>
   <script src="js/data.js"></script>

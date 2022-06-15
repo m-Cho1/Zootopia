@@ -1,14 +1,21 @@
 var $refreshBtn = document.querySelector('#refresh-btn');
 var $ul = document.querySelector('#animal-list');
-
+var $favoriteBtn = document.querySelector('#favorites-btn');
+var $favoriteUl = document.querySelector('#favorites-list');
+var $noFavMessage = document.querySelector('#no-favorite-message');
 var currentAnimalList;
 
 window.addEventListener('DOMContentLoaded', function (event) {
   event.preventDefault();
   loadAnimalList();
   viewSwap('main-list');
+  $favoriteBtn.classList.remove('hidden');
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
+  for (var i = 0; i < data.favorites.length; i++) {
+    var favorite = renderFavorites(data.favorites[i]);
+    $favoriteUl.appendChild(favorite);
+  }
 });
 
 // loading animal list
@@ -83,13 +90,17 @@ function viewSwap(view) {
 
 // hiding buttons in footer:
 var $backToListBtn = document.querySelector('#back-to-list-btn');
-$backToListBtn.addEventListener('click', function () {
+var $backToMainBtn = document.querySelector('#back-to-main-btn1');
+$backToMainBtn.addEventListener('click', changeButtons);
+$backToListBtn.addEventListener('click', changeButtons);
+function changeButtons() {
   resetCurrentAnimalData();
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
+  $favoriteBtn.classList.remove('hidden');
   $div.replaceChildren();
   viewSwap('main-list');
-});
+}
 
 // reset currentAnimalData:
 function resetCurrentAnimalData() {
@@ -259,26 +270,120 @@ $cancelModal.addEventListener('click', function (event) {
   $modalContainer.classList.add('hidden');
 });
 
-// add current animal to favorites:
+// add current animal to data.favorites:
 var $confirmModalBtn = document.querySelector('#confirm-btn');
 $confirmModalBtn.addEventListener('click', addToFavorites);
 
 function addToFavorites(event) {
   var favoriteAnimal = Object.create(currentAnimalData);
-  favoriteAnimal.activeTime = currentAnimalData.activeTime;
+  favoriteAnimal.favoriteId = data.nextFavoriteId;
   favoriteAnimal.animalName = currentAnimalData.animalName;
+  favoriteAnimal.activeTime = currentAnimalData.activeTime;
   favoriteAnimal.animalType = currentAnimalData.animalType;
   favoriteAnimal.diet = currentAnimalData.diet;
   favoriteAnimal.geoRange = currentAnimalData.geoRange;
   favoriteAnimal.habitat = currentAnimalData.habitat;
   favoriteAnimal.image = currentAnimalData.image;
   favoriteAnimal.lifeSpan = currentAnimalData.lifeSpan;
-  favoriteAnimal.favoriteId = data.nextFavoriteId;
   data.favorites.unshift(favoriteAnimal);
+  var newFavorite = renderFavorites(data.favorites[0]);
+  $favoriteUl.prepend(newFavorite);
   data.nextFavoriteId++;
   viewSwap('main-list');
   $modalContainer.classList.add('hidden');
   $refreshBtn.classList.remove('hidden');
   $backToListBtn.classList.add('hidden');
+  $favoriteBtn.classList.remove('hidden');
   resetCurrentAnimalData();
+}
+
+// favorites page view function:
+$favoriteBtn.addEventListener('click', viewFavorites);
+function viewFavorites(event) {
+  if (data.favorites.length === 0) {
+    $noFavMessage.classList.remove('hidden');
+  } else {
+    $noFavMessage.classList.add('hidden');
+  }
+  viewSwap('favorites');
+  $refreshBtn.classList.add('hidden');
+  $favoriteBtn.classList.add('hidden');
+  $backToListBtn.classList.remove('hidden');
+}
+
+// DOM tree for rendering favorite animals:
+function renderFavorites(event) {
+  var $li = document.createElement('li');
+  $li.setAttribute('class', 'list-style-favorites');
+
+  var $row = document.createElement('div');
+  $row.setAttribute('class', 'row display-flex-favorites-list');
+  $li.appendChild($row);
+
+  var $columnHalf1 = document.createElement('div');
+  $columnHalf1.setAttribute('class', 'column-half padding-bottom padding-right-favorites');
+  $row.appendChild($columnHalf1);
+
+  var $cardWrapperImg = document.createElement('div');
+  $cardWrapperImg.setAttribute('class', 'card-wrapper-favorites');
+  $columnHalf1.appendChild($cardWrapperImg);
+
+  var $cardImg = document.createElement('div');
+  $cardImg.setAttribute('class', 'style-card-favorites-img');
+  $cardWrapperImg.appendChild($cardImg);
+
+  var $imgFavorite = document.createElement('img');
+  $imgFavorite.setAttribute('src', event.image);
+  $imgFavorite.setAttribute('alt', event.animalName);
+  $imgFavorite.setAttribute('class', 'style-img-favorites-page');
+  $cardImg.appendChild($imgFavorite);
+
+  var $imgName = document.createElement('h4');
+  $imgName.setAttribute('class', 'font-nunito font-size-img-title text-center-favorites');
+  $imgName.textContent = event.animalName;
+  $cardImg.appendChild($imgName);
+
+  var $columnHalf2 = document.createElement('div');
+  $columnHalf2.setAttribute('class', 'column-half padding-bottom padding-left-favorites');
+  $row.appendChild($columnHalf2);
+
+  var $cardDetails = document.createElement('div');
+  $cardDetails.setAttribute('class', 'favorite-card-detail-text');
+  $columnHalf2.appendChild($cardDetails);
+
+  var $descriptionTitle = document.createElement('h3');
+  $descriptionTitle.setAttribute('class', 'style-detail-title font-nunito');
+  $descriptionTitle.textContent = 'Description';
+  $cardDetails.appendChild($descriptionTitle);
+
+  var $descriptionUl = document.createElement('ul');
+  $descriptionUl.setAttribute('class', 'description-list font-nunito');
+  $cardDetails.appendChild($descriptionUl);
+
+  var $animalType = document.createElement('li');
+  $animalType.setAttribute('class', 'style-description-list-item');
+  $animalType.textContent = 'Animal Type: ' + event.animalType;
+  $descriptionUl.appendChild($animalType);
+
+  var $activeTime = document.createElement('li');
+  $activeTime.setAttribute('class', 'style-description-list-item');
+  $activeTime.textContent = 'Active Time: ' + event.activeTime;
+  $descriptionUl.appendChild($activeTime);
+
+  var $lifespan = document.createElement('li');
+  $lifespan.setAttribute('class', 'style-description-list-item');
+  $lifespan.textContent = 'Lifespan: ' + event.lifeSpan + ' years';
+  $descriptionUl.appendChild($lifespan);
+
+  var $habitat = document.createElement('li');
+  $habitat.setAttribute('class', 'style-description-list-item');
+  $habitat.textContent = 'Habitat: ' + event.habitat;
+  $descriptionUl.appendChild($habitat);
+
+  var $geoRange = document.createElement('li');
+  $geoRange.setAttribute('class', 'style-description-list-item');
+  $geoRange.textContent = 'Geo-range: ' + event.geoRange;
+  $descriptionUl.appendChild($geoRange);
+
+  return $li;
 }

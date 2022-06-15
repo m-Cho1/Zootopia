@@ -19,6 +19,12 @@ main {
   min-height: calc(100vh - 4rem);
 }
 
+.container-favorites {
+  width: 800px;
+  margin: 1rem 3rem 2rem;
+  min-height: calc(90vh - 4rem);
+}
+
 .column-full,
 .column-half {
   width: 100%;
