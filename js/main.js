@@ -3,6 +3,11 @@ var $ul = document.querySelector('#animal-list');
 var $favoriteBtn = document.querySelector('#favorites-btn');
 var $favoriteUl = document.querySelector('#favorites-list');
 var $noFavMessage = document.querySelector('#no-favorite-message');
+var $modalText = document.querySelector('#modal-text');
+var $deleteBtnModal = document.querySelector('#delete-btn');
+var $racoonImgInModal = document.querySelector('#racoon');
+var $parrotImgInModal = document.querySelector('#parrot');
+
 var currentAnimalList;
 
 window.addEventListener('DOMContentLoaded', function (event) {
@@ -314,6 +319,7 @@ function viewFavorites(event) {
 // DOM tree for rendering favorite animals:
 function renderFavorites(event) {
   var $li = document.createElement('li');
+  $li.setAttribute('id', event.favoriteId);
   $li.setAttribute('class', 'list-style-favorites');
 
   var $row = document.createElement('div');
@@ -396,4 +402,24 @@ function renderFavorites(event) {
   $deleteBtnContainer.appendChild($deleteBtn);
 
   return $li;
+}
+
+// delete animal in favorites page:
+$favoriteUl.addEventListener('click', deleteAnimalCheck);
+function deleteAnimalCheck(event) {
+  if (event.target.tagName !== 'BUTTON') {
+    return;
+  }
+  if (event.target.tagName === 'BUTTON') {
+    $modalContainer.classList.remove('hidden');
+    $confirmModalBtn.classList.add('hidden');
+    $deleteBtnModal.classList.remove('hidden');
+    $modalText.textContent = 'Delete this animal?';
+    $racoonImgInModal.classList.add('hidden');
+    $parrotImgInModal.classList.remove('hidden');
+  }
+}
+
+function deleteAnimal(event) {
+  // create function that deletes animal in data.favortites and remove DOM tree for selected animal here.
 }
