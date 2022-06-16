@@ -4,7 +4,6 @@ var $favoriteBtn = document.querySelector('#favorites-btn');
 var $favoriteUl = document.querySelector('#favorites-list');
 var $noFavMessage = document.querySelector('#no-favorite-message');
 var $modalText = document.querySelector('#modal-text');
-var $deleteBtnModal = document.querySelector('#delete-btn');
 var $racoonImgInModal = document.querySelector('#racoon');
 var $parrotImgInModal = document.querySelector('#parrot');
 var $deleteBtnInModal = document.querySelector('#delete-btn-in-modal');
@@ -424,6 +423,19 @@ function deleteAnimalCheck(event) {
 // deleting animal in DOM tree and local storage:
 $deleteBtnInModal.addEventListener('click', deleteAnimal);
 function deleteAnimal(event) {
-  // create function that deletes animal in data.favortites and remove DOM tree for selected animal here.
+  var $liInFavorites = document.querySelectorAll('.list-style-favorites');
+  for (var i = 0; i < data.favorites.length; i++) {
+    var currentAnimal = data.favorites[i].favoriteId;
+    var indexFavId = $liInFavorites[i].getAttribute('id');
+    if (currentAnimal === parseInt(indexFavId)) {
+      data.favorites.splice(i, 1);
+      $liInFavorites[i].remove();
+    }
+  }
   $modalContainer.classList.add('hidden');
+  if (data.favorites.length === 0) {
+    $noFavMessage.classList.remove('hidden');
+  } else {
+    $noFavMessage.classList.add('hidden');
+  }
 }
