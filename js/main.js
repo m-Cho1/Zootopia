@@ -3,6 +3,11 @@ var $ul = document.querySelector('#animal-list');
 var $favoriteBtn = document.querySelector('#favorites-btn');
 var $favoriteUl = document.querySelector('#favorites-list');
 var $noFavMessage = document.querySelector('#no-favorite-message');
+var $modalText = document.querySelector('#modal-text');
+var $racoonImgInModal = document.querySelector('#racoon');
+var $parrotImgInModal = document.querySelector('#parrot');
+var $deleteBtnInModal = document.querySelector('#delete-btn-in-modal');
+
 var currentAnimalList;
 
 window.addEventListener('DOMContentLoaded', function (event) {
@@ -253,7 +258,7 @@ function renderDetail(event) {
   return $row2;
 }
 
-// modal popup when user + button clicked:
+// modal popup when + button clicked:
 var $modalContainer = document.querySelector('.overlay');
 $div.addEventListener('click', function (event) {
   if (event.target.tagName !== 'I') {
@@ -261,6 +266,11 @@ $div.addEventListener('click', function (event) {
   }
   if (event.target.tagName === 'I') {
     $modalContainer.classList.remove('hidden');
+    $modalText.textContent = 'Add to favorites?';
+    $racoonImgInModal.classList.remove('hidden');
+    $parrotImgInModal.classList.add('hidden');
+    $confirmModalBtn.classList.remove('hidden');
+    $deleteBtnInModal.classList.add('hidden');
   }
 });
 
@@ -314,6 +324,7 @@ function viewFavorites(event) {
 // DOM tree for rendering favorite animals:
 function renderFavorites(event) {
   var $li = document.createElement('li');
+  $li.setAttribute('id', event.favoriteId);
   $li.setAttribute('class', 'list-style-favorites');
 
   var $row = document.createElement('div');
@@ -381,9 +392,56 @@ function renderFavorites(event) {
   $descriptionUl.appendChild($habitat);
 
   var $geoRange = document.createElement('li');
-  $geoRange.setAttribute('class', 'style-description-list-item');
+  $geoRange.setAttribute('class', 'style-description-list-item padding-bottom');
   $geoRange.textContent = 'Geo-range: ' + event.geoRange;
   $descriptionUl.appendChild($geoRange);
 
+  var $deleteBtnContainer = document.createElement('div');
+  $deleteBtnContainer.setAttribute('class', 'style-delete-btn-container');
+  $descriptionUl.appendChild($deleteBtnContainer);
+
+  var $deleteBtn = document.createElement('button');
+  $deleteBtn.setAttribute('class', 'style-delete-button');
+  $deleteBtn.setAttribute('id', 'delete-btn');
+  $deleteBtn.textContent = 'Delete';
+  $deleteBtnContainer.appendChild($deleteBtn);
+
   return $li;
 }
+
+// delete animal in favorites page:
+var currentDeleteAnimal = function deleteAnimalCheck(event) {
+  // checking only delete button is clicked:
+  if (event.target.tagName !== 'BUTTON') {
+    return;
+  }
+  if (event.target.tagName === 'BUTTON') {
+    $modalContainer.classList.remove('hidden');
+    $confirmModalBtn.classList.add('hidden');
+    $deleteBtnInModal.classList.remove('hidden');
+    $modalText.textContent = 'Delete this animal?';
+    $racoonImgInModal.classList.add('hidden');
+    $parrotImgInModal.classList.remove('hidden');
+  }
+  var closestElement = event.target.closest('.list-style-favorites');
+
+  // actually deleting list in favorites page:
+  $deleteBtnInModal.addEventListener('click', deleteAnimal);
+  function deleteAnimal(event) {
+    var currentTarget = closestElement.id;
+    for (var i = 0; i < data.favorites.length; i++) {
+      var currentAnimal = data.favorites[i].favoriteId;
+      if (currentAnimal === parseInt(currentTarget)) {
+        data.favorites.splice(i, 1);
+        closestElement.remove();
+      }
+    }
+    $modalContainer.classList.add('hidden');
+    if (data.favorites.length === 0) {
+      $noFavMessage.classList.remove('hidden');
+    } else {
+      $noFavMessage.classList.add('hidden');
+    }
+  }
+};
+$favoriteUl.addEventListener('click', currentDeleteAnimal);
