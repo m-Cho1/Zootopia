@@ -258,7 +258,7 @@ function renderDetail(event) {
   return $row2;
 }
 
-// modal popup when user + button clicked:
+// modal popup when + button clicked:
 var $modalContainer = document.querySelector('.overlay');
 $div.addEventListener('click', function (event) {
   if (event.target.tagName !== 'I') {
@@ -266,6 +266,11 @@ $div.addEventListener('click', function (event) {
   }
   if (event.target.tagName === 'I') {
     $modalContainer.classList.remove('hidden');
+    $modalText.textContent = 'Add to favorites?';
+    $racoonImgInModal.classList.remove('hidden');
+    $parrotImgInModal.classList.add('hidden');
+    $confirmModalBtn.classList.remove('hidden');
+    $deleteBtnInModal.classList.add('hidden');
   }
 });
 
