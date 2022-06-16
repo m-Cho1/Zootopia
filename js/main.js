@@ -7,6 +7,7 @@ var $modalText = document.querySelector('#modal-text');
 var $deleteBtnModal = document.querySelector('#delete-btn');
 var $racoonImgInModal = document.querySelector('#racoon');
 var $parrotImgInModal = document.querySelector('#parrot');
+var $deleteBtnInModal = document.querySelector('#delete-btn-in-modal');
 
 var currentAnimalList;
 
@@ -413,13 +414,16 @@ function deleteAnimalCheck(event) {
   if (event.target.tagName === 'BUTTON') {
     $modalContainer.classList.remove('hidden');
     $confirmModalBtn.classList.add('hidden');
-    $deleteBtnModal.classList.remove('hidden');
+    $deleteBtnInModal.classList.remove('hidden');
     $modalText.textContent = 'Delete this animal?';
     $racoonImgInModal.classList.add('hidden');
     $parrotImgInModal.classList.remove('hidden');
   }
 }
 
+// deleting animal in DOM tree and local storage:
+$deleteBtnInModal.addEventListener('click', deleteAnimal);
 function deleteAnimal(event) {
   // create function that deletes animal in data.favortites and remove DOM tree for selected animal here.
+  $modalContainer.classList.add('hidden');
 }
