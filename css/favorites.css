@@ -30,7 +30,7 @@
 
 .favorite-card-detail-text {
   width: 21rem;
-  height: 17rem;
+  height: auto;
   background-color: white;
   border-radius: 0.5rem;
   border: 0.5px solid rgb(190, 189, 189);

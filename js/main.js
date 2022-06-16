@@ -410,8 +410,8 @@ function renderFavorites(event) {
 }
 
 // delete animal in favorites page:
-$favoriteUl.addEventListener('click', deleteAnimalCheck);
-function deleteAnimalCheck(event) {
+var currentDeleteAnimal = function deleteAnimalCheck(event) {
+  // checking only delete button is clicked:
   if (event.target.tagName !== 'BUTTON') {
     return;
   }
@@ -423,24 +423,25 @@ function deleteAnimalCheck(event) {
     $racoonImgInModal.classList.add('hidden');
     $parrotImgInModal.classList.remove('hidden');
   }
-}
+  var closestElement = event.target.closest('.list-style-favorites');
 
-// deleting animal in DOM tree and local storage:
-$deleteBtnInModal.addEventListener('click', deleteAnimal);
-function deleteAnimal(event) {
-  var $liInFavorites = document.querySelectorAll('.list-style-favorites');
-  for (var i = 0; i < data.favorites.length; i++) {
-    var currentAnimal = data.favorites[i].favoriteId;
-    var indexFavId = $liInFavorites[i].getAttribute('id');
-    if (currentAnimal === parseInt(indexFavId)) {
-      data.favorites.splice(i, 1);
-      $liInFavorites[i].remove();
+  // actually deleting list in favorites page:
+  $deleteBtnInModal.addEventListener('click', deleteAnimal);
+  function deleteAnimal(event) {
+    var currentTarget = closestElement.id;
+    for (var i = 0; i < data.favorites.length; i++) {
+      var currentAnimal = data.favorites[i].favoriteId;
+      if (currentAnimal === parseInt(currentTarget)) {
+        data.favorites.splice(i, 1);
+        closestElement.remove();
+      }
+    }
+    $modalContainer.classList.add('hidden');
+    if (data.favorites.length === 0) {
+      $noFavMessage.classList.remove('hidden');
+    } else {
+      $noFavMessage.classList.add('hidden');
     }
   }
-  $modalContainer.classList.add('hidden');
-  if (data.favorites.length === 0) {
-    $noFavMessage.classList.remove('hidden');
-  } else {
-    $noFavMessage.classList.add('hidden');
-  }
-}
+};
+$favoriteUl.addEventListener('click', currentDeleteAnimal);
