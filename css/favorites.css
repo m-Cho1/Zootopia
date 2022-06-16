@@ -45,3 +45,17 @@
   font-size: 2rem;
   font-family: nunito, sans-serif;
 }
+
+.style-delete-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  width: 95%;
+}
+
+.style-delete-button {
+  border: none;
+  background-color: transparent;
+  color: orangered;
+  text-decoration: underline;
+}

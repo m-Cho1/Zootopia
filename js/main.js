@@ -381,9 +381,19 @@ function renderFavorites(event) {
   $descriptionUl.appendChild($habitat);
 
   var $geoRange = document.createElement('li');
-  $geoRange.setAttribute('class', 'style-description-list-item');
+  $geoRange.setAttribute('class', 'style-description-list-item padding-bottom');
   $geoRange.textContent = 'Geo-range: ' + event.geoRange;
   $descriptionUl.appendChild($geoRange);
+
+  var $deleteBtnContainer = document.createElement('div');
+  $deleteBtnContainer.setAttribute('class', 'style-delete-btn-container');
+  $descriptionUl.appendChild($deleteBtnContainer);
+
+  var $deleteBtn = document.createElement('button');
+  $deleteBtn.setAttribute('class', 'style-delete-button');
+  $deleteBtn.setAttribute('id', 'delete-btn');
+  $deleteBtn.textContent = 'Delete';
+  $deleteBtnContainer.appendChild($deleteBtn);
 
   return $li;
 }
