@@ -7,6 +7,15 @@ var $modalText = document.querySelector('#modal-text');
 var $racoonImgInModal = document.querySelector('#racoon');
 var $parrotImgInModal = document.querySelector('#parrot');
 var $deleteBtnInModal = document.querySelector('#delete-btn-in-modal');
+var $mainLogo = document.querySelector('#logo-title');
+
+$mainLogo.addEventListener('click', function (event) {
+  viewSwap('main-list');
+  $favoriteBtn.classList.remove('hidden');
+  $refreshBtn.classList.remove('hidden');
+  $backToListBtn.classList.add('hidden');
+  resetCurrentAnimalData();
+});
 
 var currentAnimalList;
 
@@ -116,6 +125,7 @@ function resetCurrentAnimalData() {
   currentAnimalData.habitat = '';
   currentAnimalData.diet = '';
   currentAnimalData.geoRange = '';
+  currentAnimalData.image = '';
 }
 
 // clicking animal to view detail:
