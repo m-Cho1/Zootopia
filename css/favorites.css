@@ -15,6 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
 }
 
 .style-img-favorites-page {
@@ -36,6 +37,7 @@
   border: 0.5px solid rgb(190, 189, 189);
   display: flex;
   flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
 }
 
 .list-style-no-favorite {
