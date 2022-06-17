@@ -288,7 +288,7 @@ function addToFavorites(event) {
   for (var i = 0; i < data.favorites.length; i++) {
     var findDuplicate = data.favorites[i].animalName;
     if (currentAnimalData.animalName === findDuplicate) {
-      alert('already exists!');
+      alert('This animal is already added!');
       $modalContainer.classList.add('hidden');
       return;
     }
