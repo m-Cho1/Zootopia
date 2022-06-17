@@ -8,7 +8,69 @@ var $racoonImgInModal = document.querySelector('#racoon');
 var $parrotImgInModal = document.querySelector('#parrot');
 var $deleteBtnInModal = document.querySelector('#delete-btn-in-modal');
 var $mainLogo = document.querySelector('#logo-title');
+var $footer = document.querySelector('#footer');
+var $hereBtn = document.querySelector('#switch-to-main-btn');
+var $btnContainerInFooter = document.querySelector('.button-container');
 
+window.addEventListener('DOMContentLoaded', function (event) {
+  event.preventDefault();
+  $footer.classList.add('hidden');
+  $btnContainerInFooter.classList.add('hidden');
+  carouselImg();
+  viewSwap('carousel');
+  loadAnimalList();
+  $favoriteBtn.classList.add('hidden');
+  $refreshBtn.classList.add('hidden');
+  $backToListBtn.classList.add('hidden');
+  for (var i = 0; i < data.favorites.length; i++) {
+    var favorite = renderFavorites(data.favorites[i]);
+    $favoriteUl.appendChild(favorite);
+  }
+});
+
+// click event handler in carousel page:
+$hereBtn.addEventListener('click', function () {
+  viewSwap('main-list');
+  $footer.classList.remove('hidden');
+  $btnContainerInFooter.classList.remove('hidden');
+  $favoriteBtn.classList.remove('hidden');
+  $refreshBtn.classList.remove('hidden');
+  $backToListBtn.classList.add('hidden');
+});
+
+// carousel img request from API:
+var carouselAnimal = [];
+
+function carouselImg(event) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://zoo-animal-api.herokuapp.com/animals/rand/10');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', xhrLoadFunc);
+
+  function xhrLoadFunc(event) {
+    // console.log('xhr status : ', xhr.status);
+    // console.log('xhr response : ', xhr.response);
+    var response = xhr.response;
+    for (var i = 0; i < response.length; i++) {
+      var imgLink = response[i].image_link;
+      carouselAnimal.push(imgLink);
+    }
+  }
+  xhr.send();
+}
+
+// carousel function:
+var $imgCarousel = document.querySelector('#img-carousel');
+var counter = 0;
+setInterval(function () {
+  $imgCarousel.setAttribute('src', carouselAnimal[counter]);
+  counter++;
+  if (counter >= carouselAnimal.length) {
+    counter = 0;
+  }
+}, 2000);
+
+// added click event to logo:
 $mainLogo.addEventListener('click', function (event) {
   viewSwap('main-list');
   $favoriteBtn.classList.remove('hidden');
@@ -19,20 +81,7 @@ $mainLogo.addEventListener('click', function (event) {
 
 var currentAnimalList;
 
-window.addEventListener('DOMContentLoaded', function (event) {
-  event.preventDefault();
-  loadAnimalList();
-  viewSwap('main-list');
-  $favoriteBtn.classList.remove('hidden');
-  $refreshBtn.classList.remove('hidden');
-  $backToListBtn.classList.add('hidden');
-  for (var i = 0; i < data.favorites.length; i++) {
-    var favorite = renderFavorites(data.favorites[i]);
-    $favoriteUl.appendChild(favorite);
-  }
-});
-
-// loading animal list
+// loading animal list in main page:
 function loadAnimalList(event) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://zoo-animal-api.herokuapp.com/animals/rand/10');
