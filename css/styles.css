@@ -86,6 +86,15 @@
   padding-bottom: 1rem;
 }
 
+.card-wrapper {
+  transform: scale(1);
+  transition: transform 0.5s;
+}
+
+.card-wrapper:hover {
+  transform: scale(1.1);
+}
+
 .card {
   width: 8rem;
   height: 13.5rem;
