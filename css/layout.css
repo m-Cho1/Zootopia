@@ -25,6 +25,11 @@ main {
   min-height: calc(90vh - 4rem);
 }
 
+.container-carousel {
+  width: 800px;
+  min-height: calc(90vh - 4rem);
+}
+
 .column-full,
 .column-half {
   width: 100%;

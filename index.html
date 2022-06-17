@@ -48,6 +48,16 @@
     </div>
   </header>
   <main>
+    <div data-view="carousel" class="container-carousel">
+      <div class="row">
+        <div class="column-full display-flex justify-center style-column-img-carousel">
+          <img id="img-carousel" class="style-carousel-img" src="animal.svg/leopard.svg" alt="animal image">
+        </div>
+        <div class="column-full display-flex justify-center">
+          <h3 class="font">Click <a id="switch-to-main-btn" class="style-here">Here</a> to View Animals!</h3>
+        </div>
+      </div>
+    </div>
     <div data-view="main-list" class="container-main">
       <div class="row">
         <div class="column-full">
@@ -85,7 +95,7 @@
     </div>
 
   </main>
-  <footer class="style-footer">
+  <footer id="footer" class="style-footer">
     <div class="button-container">
       <button id="refresh-btn" class="style-refresh-btn hidden">Refresh Animals List</button>
       <button id="back-to-list-btn" class="style-back-to-list-btn">Back to Main</button>
