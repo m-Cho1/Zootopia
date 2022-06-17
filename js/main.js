@@ -285,6 +285,14 @@ var $confirmModalBtn = document.querySelector('#confirm-btn');
 $confirmModalBtn.addEventListener('click', addToFavorites);
 
 function addToFavorites(event) {
+  for (var i = 0; i < data.favorites.length; i++) {
+    var findDuplicate = data.favorites[i].animalName;
+    if (currentAnimalData.animalName === findDuplicate) {
+      alert('This animal is already added!');
+      $modalContainer.classList.add('hidden');
+      return;
+    }
+  }
   var favoriteAnimal = Object.create(currentAnimalData);
   favoriteAnimal.favoriteId = data.nextFavoriteId;
   favoriteAnimal.animalName = currentAnimalData.animalName;
