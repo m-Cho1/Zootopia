@@ -32,7 +32,7 @@
   padding-top: 3px;
 }
 
-.padding-top-main-list {
+.padding-top {
   padding-top: 2rem;
 }
 
@@ -44,12 +44,22 @@
   font-size: 1.8rem;
 }
 
+.style-header > h1:hover {
+  cursor: pointer;
+}
+
 .style-footer {
+  margin-top: 1rem;
   height: 4rem;
   display: flex;
   background-color: #fdf6ec;
   justify-content: center;
   align-items: center;
+}
+
+.style-font-main {
+  text-align: center;
+  margin: 0;
 }
 
 .style-refresh-btn {
@@ -65,11 +75,30 @@
   display: flex;
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
+.align-item {
+  align-items: center;
+}
+
 .list-style {
   display: flex;
   justify-content: center;
   flex-basis: calc(100% / 2);
   padding-bottom: 1rem;
+}
+
+.card-wrapper {
+  border-radius: 0.4rem;
+  transform: scale(1);
+  transition: transform 0.5s;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 14px 28px, rgba(0, 0, 0, 0.22) 0 10px 10px;
+}
+
+.card-wrapper:hover {
+  transform: scale(1.1);
 }
 
 .card {
@@ -109,13 +138,18 @@ li {
   font-family: Nunito, sans-serif;
   font-weight: bold;
   font-size: 0.9rem;
-  padding-top: 0.5rem;
+  padding: 0.5rem 0.1rem 0;
   margin: 0;
+}
+
+.card-wrapper-detail {
+  border-radius: 0.5rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
 }
 
 .style-card-detail-img {
   width: 21rem;
-  height: 21rem;
+  height: 24rem;
   background-color: white;
   border-radius: 0.5rem;
   border: 0.5px solid rgb(190, 189, 189);
@@ -127,7 +161,7 @@ li {
 .style-img-detail-page {
   padding: 1rem;
   width: 100%;
-  height: 16rem;
+  height: 20rem;
   border-radius: 1.4rem;
 }
 
@@ -139,10 +173,12 @@ li {
   border: 0.5px solid rgb(190, 189, 189);
   display: flex;
   flex-direction: column;
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
 }
 
 .style-title-information {
   font-size: 1.5rem;
+  margin-top: 0;
   font-weight: bolder;
 }
 
@@ -188,7 +224,7 @@ button:hover {
 .button-container {
   width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .style-back-to-list-btn {
@@ -205,7 +241,107 @@ button:hover {
 }
 
 .font-size-img-title {
+  margin-top: 0.2rem;
   font-size: 1.3rem;
+}
+
+i {
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.style-message-modal {
+  font-family: roboto, sans-serif;
+  font-weight: bold;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.style-message-modal > img {
+  width: 20%;
+  margin-left: 1rem;
+}
+
+.modal-message {
+  position: absolute;
+  top: 20%;
+  background-color: white;
+  border: none;
+  border-radius: 0.2rem;
+  display: flex;
+  width: 20rem;
+  height: 10rem;
+  flex-direction: column;
+}
+
+.button-container-modal {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.sytle-button-cancel {
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: rgba(241, 45, 11, 0.959);
+  color: white;
+  font-family: roboto, sans-serif;
+}
+
+.style-button-confirm {
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: rgb(88, 204, 10);
+  color: white;
+  font-family: roboto, sans-serif;
+}
+
+.style-row-favorites {
+  width: 100%;
+}
+
+.style-back-to-main-btn {
+  width: 8rem;
+  height: 2.2rem;
+  border: 1px solid #343a40;
+  background-color: transparent;
+  font-family: roboto, sans-serif;
+  border-radius: 0.2rem;
+  color: #343a40;
+}
+
+.style-column-img-carousel {
+  margin-top: 5rem;
+}
+
+.style-carousel-img {
+  padding: 1rem;
+  height: 25rem;
+  width: 70%;
+  border-radius: 1.4rem;
+  box-shadow: rgb(38, 57, 77) 0 20px 30px -10px;
+}
+
+.style-here {
+  color: blue;
+  text-decoration: underline;
+}
+
+.style-here:hover {
+  color: aquamarine;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
@@ -231,6 +367,18 @@ button:hover {
 
   .padding-bottom-detail-text {
     padding-bottom: 1rem;
+  }
+
+  .display-flex-favorites-list {
+    display: flex;
+  }
+
+  .padding-right-favorites {
+    padding-right: 1rem;
+  }
+
+  .padding-left-favorites {
+    padding-left: 1rem;
   }
 }
 

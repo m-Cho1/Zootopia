@@ -1,0 +1,73 @@
+.style-ul-favorites {
+  padding: 0;
+}
+
+.list-style-favorites {
+  list-style: none;
+}
+
+.card-wrapper-favorites {
+  width: 21rem;
+  height: 24rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 0.5px solid rgb(190, 189, 189);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+}
+
+.style-img-favorites-page {
+  padding: 1rem;
+  width: 21rem;
+  height: 20rem;
+  border-radius: 1.4rem;
+}
+
+.text-center-favorites {
+  text-align: center;
+}
+
+.favorite-card-detail-text {
+  width: 21rem;
+  height: auto;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 0.5px solid rgb(190, 189, 189);
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+}
+
+.list-style-no-favorite {
+  padding-top: 2rem;
+  list-style: none;
+  text-align: center;
+  font-size: 2rem;
+  font-family: nunito, sans-serif;
+}
+
+.style-delete-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  width: 95%;
+}
+
+.style-delete-button {
+  border: none;
+  background-color: transparent;
+  color: orangered;
+  text-decoration: underline;
+}
+
+.style-button-delete-modal {
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: rgb(88, 204, 10);
+  color: white;
+  font-family: roboto, sans-serif;
+}
