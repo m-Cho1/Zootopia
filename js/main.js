@@ -30,7 +30,6 @@ function loadAnimalList(event) {
   }
   xhr.send();
 }
-// loadAnimalList();
 
 // refreshing animal list button function
 $refreshBtn.addEventListener('click', refreshAnimalList);
@@ -204,32 +203,68 @@ function renderDetail(event) {
 
   var $animalType = document.createElement('li');
   $animalType.setAttribute('class', 'style-description-list-item');
-  $animalType.textContent = 'Animal Type : ' + event.animalType;
+  var $type = document.createElement('span');
+  $type.setAttribute('class', 'style-span-description');
+  $type.textContent = 'Animal Type: ';
+  $animalType.appendChild($type);
+  var $typeDetail = document.createElement('span');
+  $typeDetail.textContent = event.animalType;
+  $animalType.appendChild($typeDetail);
   $descriptionList.appendChild($animalType);
 
   var $activeTime = document.createElement('li');
   $activeTime.setAttribute('class', 'style-description-list-item');
-  $activeTime.textContent = 'Active Time : ' + event.activeTime;
+  var $time = document.createElement('span');
+  $time.setAttribute('class', 'style-span-description');
+  $time.textContent = 'Active Time: ';
+  $activeTime.appendChild($time);
+  var $timeDetail = document.createElement('span');
+  $timeDetail.textContent = event.activeTime;
+  $activeTime.appendChild($timeDetail);
   $descriptionList.appendChild($activeTime);
 
   var $lifespan = document.createElement('li');
   $lifespan.setAttribute('class', 'style-description-list-item');
-  $lifespan.textContent = 'Lifespan : ' + event.lifeSpan + ' years';
+  var $life = document.createElement('span');
+  $life.setAttribute('class', 'style-span-description');
+  $life.textContent = 'Lifespan: ';
+  $lifespan.appendChild($life);
+  var $lifeDetail = document.createElement('span');
+  $lifeDetail.textContent = event.lifeSpan + ' years';
+  $lifespan.appendChild($lifeDetail);
   $descriptionList.appendChild($lifespan);
 
   var $habitat = document.createElement('li');
   $habitat.setAttribute('class', 'style-description-list-item');
-  $habitat.textContent = 'Habitat : ' + event.habitat;
+  var $environment = document.createElement('span');
+  $environment.setAttribute('class', 'style-span-description');
+  $environment.textContent = 'Habitat: ';
+  $habitat.appendChild($environment);
+  var $environmentDetail = document.createElement('span');
+  $environmentDetail.textContent = event.habitat;
+  $habitat.appendChild($environmentDetail);
   $descriptionList.appendChild($habitat);
 
   var $diet = document.createElement('li');
   $diet.setAttribute('class', 'style-description-list-item');
-  $diet.textContent = 'Diet : ' + event.diet;
+  var $food = document.createElement('span');
+  $food.setAttribute('class', 'style-span-description');
+  $food.textContent = 'Diet: ';
+  $diet.appendChild($food);
+  var $foodDetail = document.createElement('span');
+  $foodDetail.textContent = event.diet;
+  $diet.appendChild($foodDetail);
   $descriptionList.appendChild($diet);
 
   var $geoRange = document.createElement('li');
   $geoRange.setAttribute('class', 'style-description-list-item');
-  $geoRange.textContent = 'Geo-range : ' + event.geoRange;
+  var $location = document.createElement('span');
+  $location.setAttribute('class', 'style-span-description');
+  $location.textContent = 'Geo-range: ';
+  $geoRange.appendChild($location);
+  var $locationDetail = document.createElement('span');
+  $locationDetail.textContent = event.geoRange;
+  $geoRange.appendChild($locationDetail);
   $descriptionList.appendChild($geoRange);
 
   return $row1;
