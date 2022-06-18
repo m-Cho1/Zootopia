@@ -177,13 +177,15 @@ li {
 }
 
 .style-title-information {
+  font-size: 1.5rem;
   margin-top: 0;
-  font-size: 1.3rem;
   font-weight: bolder;
 }
 
 .style-detail-title {
-  padding: 0 1rem;
+  font-size: 1.3rem;
+  text-decoration: underline;
+  padding-left: 1rem;
 }
 
 .font-nunito {
@@ -199,7 +201,12 @@ li {
 }
 
 .description-list > li {
+  font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.style-span-description {
+  font-weight: bold;
 }
 
 .flex-wrap {
