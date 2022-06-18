@@ -330,6 +330,10 @@ i {
 .style-here {
   color: blue;
   text-decoration: underline;
+}
+
+.style-here:hover {
+  color: aquamarine;
   cursor: pointer;
 }
 
