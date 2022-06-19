@@ -69,6 +69,7 @@
   border: 1px solid gray;
   background-color: transparent;
   color: gray;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }
 
 .display-flex {
@@ -234,6 +235,7 @@ button:hover {
   border: 1px solid gray;
   background-color: transparent;
   color: gray;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }
 
 .style-description-list-item {
@@ -320,6 +322,7 @@ i {
   font-family: roboto, sans-serif;
   border-radius: 0.2rem;
   color: #343a40;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }
 
 .style-column-img-carousel {
@@ -342,6 +345,14 @@ i {
 .style-here:hover {
   color: aquamarine;
   cursor: pointer;
+}
+
+.padding-right-icon {
+  padding-right: 1rem;
+}
+
+.style-title-favorite {
+  font-size: 1.4rem;
 }
 
 @media screen and (min-width: 768px) {
