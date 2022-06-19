@@ -466,7 +466,7 @@ function renderFavorites(event) {
   $columnHalf2.appendChild($cardDetails);
 
   var $descriptionTitle = document.createElement('h3');
-  $descriptionTitle.setAttribute('class', 'style-detail-title font-nunito');
+  $descriptionTitle.setAttribute('class', 'style-detail-title font-nunito display-flex space-between');
   $descriptionTitle.textContent = 'Description';
   $cardDetails.appendChild($descriptionTitle);
 
@@ -529,26 +529,20 @@ function renderFavorites(event) {
   $geoRange.appendChild(locationDetail);
   $descriptionUl.appendChild($geoRange);
 
-  var $deleteBtnContainer = document.createElement('div');
-  $deleteBtnContainer.setAttribute('class', 'style-delete-btn-container');
-  $descriptionUl.appendChild($deleteBtnContainer);
-
-  var $deleteBtn = document.createElement('button');
-  $deleteBtn.setAttribute('class', 'style-delete-button');
-  $deleteBtn.setAttribute('id', 'delete-btn');
-  $deleteBtn.textContent = 'Delete';
-  $deleteBtnContainer.appendChild($deleteBtn);
+  var $deleteIcon = document.createElement('i');
+  $deleteIcon.setAttribute('class', 'fa-solid fa-trash-can padding-right-icon style-icon-delete');
+  $deleteIcon.setAttribute('id', 'delete-icon');
+  $descriptionTitle.appendChild($deleteIcon);
 
   return $li;
 }
 
-// delete animal in favorites page:
 var currentDeleteAnimal = function deleteAnimalCheck(event) {
   // checking only delete button is clicked:
-  if (event.target.tagName !== 'BUTTON') {
+  if (event.target.tagName !== 'I') {
     return;
   }
-  if (event.target.tagName === 'BUTTON') {
+  if (event.target.tagName === 'I') {
     $modalContainer.classList.remove('hidden');
     $confirmModalBtn.classList.add('hidden');
     $deleteBtnInModal.classList.remove('hidden');

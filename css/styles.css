@@ -351,6 +351,11 @@ i {
   padding-right: 1rem;
 }
 
+.style-icon-delete {
+  font-size: 0.9rem;
+  color: orangered;
+}
+
 .style-title-favorite {
   font-size: 1.4rem;
 }
