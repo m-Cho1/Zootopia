@@ -18,10 +18,10 @@ window.addEventListener('DOMContentLoaded', function (event) {
   $btnContainerInFooter.classList.add('hidden');
   carouselImg();
   viewSwap('carousel');
-  loadAnimalList();
   $favoriteBtn.classList.add('hidden');
   $refreshBtn.classList.add('hidden');
   $backToListBtn.classList.add('hidden');
+  loadAnimalList();
   for (var i = 0; i < data.favorites.length; i++) {
     var favorite = renderFavorites(data.favorites[i]);
     $favoriteUl.appendChild(favorite);
