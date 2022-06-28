@@ -1,18 +1,18 @@
-var $refreshBtn = document.querySelector('#refresh-btn');
-var $ul = document.querySelector('#animal-list');
-var $favoriteBtn = document.querySelector('#favorites-btn');
-var $favoriteUl = document.querySelector('#favorites-list');
-var $noFavMessage = document.querySelector('#no-favorite-message');
-var $modalText = document.querySelector('#modal-text');
-var $racoonImgInModal = document.querySelector('#racoon');
-var $parrotImgInModal = document.querySelector('#parrot');
-var $deleteBtnInModal = document.querySelector('#delete-btn-in-modal');
-var $mainLogo = document.querySelector('#logo-title');
-var $footer = document.querySelector('#footer');
-var $hereBtn = document.querySelector('#switch-to-main-btn');
-var $btnContainerInFooter = document.querySelector('.button-container');
+const $refreshBtn = document.querySelector('#refresh-btn');
+const $ul = document.querySelector('#animal-list');
+const $favoriteBtn = document.querySelector('#favorites-btn');
+const $favoriteUl = document.querySelector('#favorites-list');
+const $noFavMessage = document.querySelector('#no-favorite-message');
+const $modalText = document.querySelector('#modal-text');
+const $racoonImgInModal = document.querySelector('#racoon');
+const $parrotImgInModal = document.querySelector('#parrot');
+const $deleteBtnInModal = document.querySelector('#delete-btn-in-modal');
+const $mainLogo = document.querySelector('#logo-title');
+const $footer = document.querySelector('#footer');
+const $hereBtn = document.querySelector('#switch-to-main-btn');
+const $btnContainerInFooter = document.querySelector('.button-container');
 
-window.addEventListener('DOMContentLoaded', function (event) {
+window.addEventListener('DOMContentLoaded', event => {
   event.preventDefault();
   $footer.classList.add('hidden');
   $btnContainerInFooter.classList.add('hidden');
@@ -22,14 +22,14 @@ window.addEventListener('DOMContentLoaded', function (event) {
   $refreshBtn.classList.add('hidden');
   $backToListBtn.classList.add('hidden');
   loadAnimalList();
-  for (var i = 0; i < data.favorites.length; i++) {
-    var favorite = renderFavorites(data.favorites[i]);
+  for (let i = 0; i < data.favorites.length; i++) {
+    const favorite = renderFavorites(data.favorites[i]);
     $favoriteUl.appendChild(favorite);
   }
 });
 
 // click event handler in carousel page:
-$hereBtn.addEventListener('click', function () {
+$hereBtn.addEventListener('click', () => {
   viewSwap('main-list');
   $footer.classList.remove('hidden');
   $btnContainerInFooter.classList.remove('hidden');
@@ -39,10 +39,10 @@ $hereBtn.addEventListener('click', function () {
 });
 
 // carousel img request from API:
-var carouselAnimal = [];
+const carouselAnimal = [];
 
 function carouselImg(event) {
-  var xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://zoo-animal-api.herokuapp.com/animals/rand/10');
   xhr.responseType = 'json';
   xhr.addEventListener('load', xhrLoadFunc);
@@ -50,9 +50,9 @@ function carouselImg(event) {
   function xhrLoadFunc(event) {
     // console.log('xhr status : ', xhr.status);
     // console.log('xhr response : ', xhr.response);
-    var response = xhr.response;
-    for (var i = 0; i < response.length; i++) {
-      var imgLink = response[i].image_link;
+    const response = xhr.response;
+    for (let i = 0; i < response.length; i++) {
+      const imgLink = response[i].image_link;
       carouselAnimal.push(imgLink);
     }
   }
@@ -60,9 +60,9 @@ function carouselImg(event) {
 }
 
 // carousel function:
-var $imgCarousel = document.querySelector('#img-carousel');
-var counter = 0;
-setInterval(function () {
+const $imgCarousel = document.querySelector('#img-carousel');
+let counter = 0;
+setInterval(() => {
   $imgCarousel.setAttribute('src', carouselAnimal[counter]);
   counter++;
   if (counter >= carouselAnimal.length) {
@@ -71,7 +71,7 @@ setInterval(function () {
 }, 2000);
 
 // added click event to logo:
-$mainLogo.addEventListener('click', function (event) {
+$mainLogo.addEventListener('click', event => {
   viewSwap('main-list');
   $favoriteBtn.classList.remove('hidden');
   $refreshBtn.classList.remove('hidden');
@@ -79,11 +79,11 @@ $mainLogo.addEventListener('click', function (event) {
   resetCurrentAnimalData();
 });
 
-var currentAnimalList;
+let currentAnimalList;
 
 // loading animal list in main page:
 function loadAnimalList(event) {
-  var xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://zoo-animal-api.herokuapp.com/animals/rand/10');
   xhr.responseType = 'json';
   xhr.addEventListener('load', xhrLoadFunc);
@@ -91,9 +91,9 @@ function loadAnimalList(event) {
   function xhrLoadFunc(event) {
     // console.log('xhr status : ', xhr.status);
     // console.log('xhr response : ', xhr.response);
-    var response = xhr.response;
-    for (var i = 0; i < response.length; i++) {
-      var animal = response[i];
+    const response = xhr.response;
+    for (let i = 0; i < response.length; i++) {
+      const animal = response[i];
       $ul.appendChild(renderAnimal(animal));
     }
     currentAnimalList = response;

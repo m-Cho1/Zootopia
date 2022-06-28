@@ -1,11 +1,11 @@
 /* exported data */
 
-var data = {
+let data = {
   favorites: [],
   nextFavoriteId: 1
 };
 
-var previousDataEntriesJSON = localStorage.getItem('data-local-storage');
+const previousDataEntriesJSON = localStorage.getItem('data-local-storage');
 if (previousDataEntriesJSON !== null) {
   data = JSON.parse(previousDataEntriesJSON);
 }
@@ -13,6 +13,6 @@ if (previousDataEntriesJSON !== null) {
 window.addEventListener('beforeunload', beforeUnloadFunc);
 
 function beforeUnloadFunc(event) {
-  var dataJSON = JSON.stringify(data);
+  const dataJSON = JSON.stringify(data);
   localStorage.setItem('data-local-storage', dataJSON);
 }
