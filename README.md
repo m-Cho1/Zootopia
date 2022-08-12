@@ -13,6 +13,7 @@ Live demo of Zootopia can be visited in https://m-cho1.github.io/AJAX-Project-05
 * HTML
 * CSS
 * JavaScript
+ * Zoo Animal API ``https://zoo-animal-api.herokuapp.com/``
 
 ## Features
 * User can view list of zoo animals
