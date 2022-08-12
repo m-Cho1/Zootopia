@@ -11,6 +11,8 @@ const $mainLogo = document.querySelector('#logo-title');
 const $footer = document.querySelector('#footer');
 const $hereBtn = document.querySelector('#switch-to-main-btn');
 const $btnContainerInFooter = document.querySelector('.button-container');
+const $loader = document.querySelector('.lds-spinner');
+const $networkMessage = document.querySelector('.network-message');
 
 window.addEventListener('DOMContentLoaded', event => {
   event.preventDefault();
@@ -96,7 +98,13 @@ function loadAnimalList(event) {
       const animal = response[i];
       $ul.appendChild(renderAnimal(animal));
     }
+    $loader.className = 'lds-spinner hidden';
+    $ul.classList.remove('hidden');
     currentAnimalList = response;
+    if (response.length === 0) {
+      $loader.className = 'lds-spinner hidden';
+      $networkMessage.classList.remove('hidden');
+    }
   }
   xhr.send();
 }
