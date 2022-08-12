@@ -50,8 +50,6 @@ function carouselImg(event) {
   xhr.addEventListener('load', xhrLoadFunc);
 
   function xhrLoadFunc(event) {
-    // console.log('xhr status : ', xhr.status);
-    // console.log('xhr response : ', xhr.response);
     const response = xhr.response;
     for (let i = 0; i < response.length; i++) {
       const imgLink = response[i].image_link;
@@ -91,8 +89,6 @@ function loadAnimalList(event) {
   xhr.addEventListener('load', xhrLoadFunc);
 
   function xhrLoadFunc(event) {
-    // console.log('xhr status : ', xhr.status);
-    // console.log('xhr response : ', xhr.response);
     if (xhr.status === 200) {
       const response = xhr.response;
       for (let i = 0; i < response.length; i++) {
