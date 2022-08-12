@@ -93,16 +93,20 @@ function loadAnimalList(event) {
   function xhrLoadFunc(event) {
     // console.log('xhr status : ', xhr.status);
     // console.log('xhr response : ', xhr.response);
-    const response = xhr.response;
-    for (let i = 0; i < response.length; i++) {
-      const animal = response[i];
-      $ul.appendChild(renderAnimal(animal));
-    }
-    $loader.className = 'lds-spinner hidden';
-    $ul.classList.remove('hidden');
-    currentAnimalList = response;
-    if (response.length === 0) {
+    if (xhr.status === 200) {
+      const response = xhr.response;
+      for (let i = 0; i < response.length; i++) {
+        const animal = response[i];
+        $ul.appendChild(renderAnimal(animal));
+      }
       $loader.className = 'lds-spinner hidden';
+      $ul.classList.remove('hidden');
+      currentAnimalList = response;
+      if (response.length === 0) {
+        $loader.className = 'lds-spinner hidden';
+        $networkMessage.classList.remove('hidden');
+      }
+    } else {
       $networkMessage.classList.remove('hidden');
     }
   }
@@ -115,6 +119,8 @@ function refreshAnimalList(event) {
   if ($ul.children.length !== 0) {
     loadAnimalList();
     $ul.replaceChildren();
+  } else {
+    $loader.classList.remove('hidden');
   }
 }
 
