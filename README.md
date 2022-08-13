@@ -7,7 +7,7 @@ A web application for zoo animal fans who want to learn about zoo animals.
 I love going to zoo ever since I was a child. The idea of creating Zootopia came from my childhood. I thought it'd be useful to see the list of animals with their basic informations such as diet, location, or active times. Knowing the basic information about animal can give better understanding of animals and their behavior when you are at the zoo!
 
 ## Live Demo
-Live demo of Zootopia can be visited in https://m-cho1.github.io/AJAX-Project-0522/
+Live demo of Zootopia can be visited in https://m-cho1.github.io/Zootopia/
 
 ## Technologies used
 * HTML
