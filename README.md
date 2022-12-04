@@ -1,5 +1,10 @@
 # Zootopia
 
+# ** Update **
+  * The API used Heroku as a database, and because Heroku discontinued their free services, the API does not work anymore.
+  * You are more than welcome to check out my code how the API calls are made, and overall code layout!
+  <hr>
+
 A dynamic HTML, CSS, and JavaScript solo project.
 
 A web application for zoo animal fans who want to learn about zoo animals.
