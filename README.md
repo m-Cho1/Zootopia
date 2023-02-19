@@ -1,7 +1,6 @@
 # Zootopia
 
 # ** Update **
-  * Currently creating my own API to restore the API problem.
   * The 3rd party API used Heroku as a database, and because Heroku discontinued their free services, the API does not work anymore.
   * You are more than welcome to check out my code how the API calls are made, and overall code layout!
   <hr>
